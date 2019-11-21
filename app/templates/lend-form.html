@@ -14,38 +14,62 @@
   </head>
   <body>
    <!-- NAVBAR -->
-    <nav class="navbar" role="navigation" aria-label="dropdown navigation">
-      <a href="home.html" class="navbar-item">
-        <b>Poor Complex</b>
+   <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+    <a href="lender.html" class="navbar-item">
+      <b>Back</b>
+     </a>
+  
+    <div class="navbar-item">
+      <a href="login.html" class="navbar-item">
+        <b>Log out</b>
       </a>
+    </div>
     
-      <div class="navbar-item">
-        <a href="lender.html" class="navbar-item">
-          Lender
-        </a>
-      </div>
+  </nav>
+      
+  <table class="table" style="width: 60%; max-width: 100%; margin-bottom: 1rem; background-color: transparent;">
+    <thead>
+            <h1 class="title" id="home-title">
+                    Borrower information
+            </h1>
+    </thead>
+    <div style="display:inline-block;float:left;">
+      <img src=".../images/anna.jpeg" width="90px" height="90px" />
+    </div>
+    <tbody style="display:inline-block;float:right;">
+      <tr>
+        <th>Name</th>
+        <td>Anna</td>
+        <th>Birthday</th>
+        <td>01.01</td>
+        <th>Credit Rating</th>
+        <td>🌟🌟🌟</td>
+      </tr>
+      <tr>
+        <th>University</th>
+        <td>CUHK</td>
+        <th>Student ID</th>
+        <td>1155132xxx</td>
+        <th>Major</th>
+        <td>Msc of Financial Technology</td>
+      </tr>
+    </tbody>
+  </table>
+            
 
-      <div class="navbar-item">
-        <a href="borrower.html" class="navbar-item">
-          Borrower
-        </a>
-      </div>
-    </nav>
-
+<footer class="card-footer">
     <div class="container">
-
-        <div class="center-div" style="margin: auto; width: 50%; padding-top: 5%;">
-            <p class="title" style="color:white;">
-                Lenders Contribution
-            </p>
-            <p class="subtitle" style="color:white;">
-                Got spare cash? Invest, and earn interest.
+        <header>
+        <div class="center-div" style="margin: auto; width: 30%; padding-top: 3%;">
+            <p class="title" style="font-size: 30px;color: white;">
+                Lender application
             </p>
         </div>
+        </header>
 
         <div class="center-div" style="margin: auto; width: 50%; padding-top: 3%;">
             <label class="label" style="font-size: 24px; color: white;"> 
-                Enter the contribution amount:
+                Enter the request amount:
             </label>
             
             <div class="field has-addons">
@@ -57,49 +81,66 @@
                         </select>
                         </span>
                 </p>
-                <div class="control" style="width: 65%;">
-                    <input id="loan-input" class="input" type="text" placeholder="Amount of money">
+                <div class="control" style="width: 75%;">
+                    <input id="borrow-input" class="input" type="text" placeholder="Amount of money">
                 </div>
             </div>
         </div>
 
-        <div class="center-div" style="margin: auto; width: 50%; padding-top: 3%;">
+        <div class="center-div" style="margin: auto; width: 50%; padding-top: 2%;">
             <label class="label" style="font-size: 24px; color: white;"> 
-                Enter the estimated length until return:
+                Enter the maximun interest rate (%):
+            </label>
+            
+            <div class="field has-addons">
+                <div class="control" style="width: 87.2%;">
+                    <input class="input" type="number" placeholder="Expected interest rate (%)">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="center-div" style="margin: auto; width: 50%; padding-top: 2%;">
+            <label class="label" style="font-size: 24px; color: white;"> 
+                Enter the Maturity of the loan:
             </label>
             
             <div class="field has-addons">
                 <p class="control">
                     <span class="select">
                     <select>
-                        <option>DD </option>
-                        <option>MM </option>
-                        <option>YY </option>
+                        <option>Days </option>
+                        <option>Month(s) </option>
+                        <option>Year(s) </option>
                     </select>
                     </span>
                 </p>
-                <div class="control" style="width: 65%;">
-                    <input class="input" type="number" placeholder="Length of time">
+                <div class="control" style="width: 70.2%;">
+                    <input class="input" type="number" placeholder="Maturity">
                 </div>
             </div>
         </div>
 
-        <div class="center-div" style="margin: auto; width: 50%; padding-top: 2.5%;">
-            <label class="label" style="font-size: 24px; color: white;"> Approximate earned interest rate: 7% </label>
+        <div class="center-div" style="margin: auto; width: 50%; padding-top: 0.5%;">
+            <label class="label" style="font-size: 16px; color: white;"> The maturity should be at least 15 days. </label>
         </div>
 
         <div class="center-div" style="margin: auto; width: 50%; padding-top: 2.5%;">
             <label class="checkbox" style="font-size: 16px; color: white">
                 <input type="checkbox">
-                I understand the terms and conditions.
+                I agree to the apply for the loan.
             </label>
         </div>
 
-        <div class="center-div" style="margin: auto; width: 50%; padding-top: 5%;">
-            <a class="button is-link is-inverted" onclick="App.depositLoan()"> Contribute! </a>
+        <div class="center-div" style="margin: auto; width: 50%; padding-top: 2.5%;">
+            <a class="button is-link is-inverted" onclick="App.requestLoan()"> Process Application! </a>
         </div>
 
+        <div class="center-div" style="margin: auto; width: 50%; padding-top: 2.5%;">
+            <p> </p>
+        </div>
     </div>
 
+</footer>
   </body>
 </html>

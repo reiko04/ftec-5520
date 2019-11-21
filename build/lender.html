@@ -1,117 +1,157 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <link rel="icon" href="../images/logo.png">
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lender</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
-  <link rel="stylesheet" type="text/css" href="../css/lender.css">
-
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
-  <script src="./app.js"></script>
-</head>
-
-<body>
-  <!-- NAVBAR -->
-  <nav class="navbar" role="navigation" aria-label="dropdown navigation">
-    <a href="home.html" class="navbar-item">
-      <b>Poor Complex</b>
-    </a>
-
+  <head>
+    <link rel="icon" href="../images/logo.png">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Poor Complex</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="./build/home.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="./app.js"></script>
+  </head>
+  <body>
+   <!-- NAVBAR -->
+   <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+    <a href="lender.html" class="navbar-item">
+      <b>Back</b>
+     </a>
+  
     <div class="navbar-item">
-      <a href="lender.html" class="navbar-item">
-        Lender
+      <a href="login.html" class="navbar-item">
+        <b>Log out</b>
       </a>
     </div>
-
-    <div class="navbar-item">
-      <a href="borrower.html" class="navbar-item">
-        Borrower
-      </a>
-    </div>
+    
   </nav>
-  <div id="columns" class="columns">
-    <div id="col1" class="column">
-      <div id="pool" class="mycard">
-        <label class="label main-label">Poor Complex's pool</label>
-        <div class="columns">
-          <div class="column val-col">
-            <label class="label">Total Portfolio Value</label>
-            <p id="port-val" class="pool-val"></p>
-          </div>
-          <div class="column val-col">
-              <label class="label">Total Earnings</label>
-              <p class="pool-val">8.352 Eth</p>
-            </div>
-          <div class="column val-col">
-            <label class="label">Time-weighted %</label>
-            <p class="pool-val">9%</p>
-          </div>
-        </div>
-      </div>
-      <div id="graph" class="mycard">
-        <label class="label main-label">Investment history</label>
-        <canvas id="myChart" width="400" height="150"></canvas>
-      </div>
+      
+  <table class="table" style="width: 60%; max-width: 100%; margin-bottom: 1rem; background-color: transparent;">
+    <thead>
+            <h1 class="title" id="home-title">
+                    Borrower information
+            </h1>
+    </thead>
+    <div style="display:inline-block;float:left;">
+      <img src="anna.jpeg" width="90px" height="90px" />
     </div>
-    <!-- <div id="col2" class="column">
-      <div id="investment-account" class="mycard">
-        <label class="label main-label">Investment account</label>
-      </div>
-    </div> -->
-  </div>
+    <tbody style="display:inline-block;float:right;">
+      <tr>
+        <th>Name</th>
+        <td>Anna</td>
+        <th>Birthday</th>
+        <td>01.01</td>
+        <th>Credit Rating</th>
+        <td>🌟🌟🌟</td>
+      </tr>
+      <tr>
+        <th>University</th>
+        <td>CUHK</td>
+        <th>Student ID</th>
+        <td>1155132xxx</td>
+        <th>Major</th>
+        <td>Msc of Financial Technology</td>
+      </tr>
+    </tbody>
+  </table>
+            
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
-  <script>
-    var ctx = document.getElementById("myChart").getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ["2012", "2013", "2014", "2015", "2016", "2017"],
-        datasets: [{
-          label: 'Investments',
-          data: [20, 30, 34, 50, 66, 90],
-          backgroundColor: 'rgba(124, 182, 182, 0.2)',
-          borderColor: 'rgba(124, 182, 182, 1)',
-          borderWidth: 1
-        },
-        {
-          label: 'Earnings',
-          data: [25, 33, 40, 56, 69, 95],
-          backgroundColor: 'rgba(255, 159, 64, 0.2)',
-          borderColor: 'rgba(255, 159, 64, 1)',
-          borderWidth: 1
-        }
-        ]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: false
-            },
-            scaleLabel:
-            {
-              display: true,
-              labelString: "Ether"
-            }
-          }],
-          xAxes: [{
-            scaleLabel:
-            {
-              display: true,
-              labelString: "Years"
-            }
-          }]
-        }
-      }
-    });
-  </script>
-</body>
+<footer class="card-footer">
+    <div class="container">
+        <header>
+        <div class="center-div" style="margin: auto; width: 30%; padding-top: 3%;">
+            <p class="title" style="font-size: 30px;color: white;">
+                Borrowers Request
+            </p>
+        </div>
+        </header>
 
+        <div class="center-div" style="margin: auto; width: 50%; padding-top: 3%;">
+            <label class="label" style="font-size: 24px; color: white;"> 
+                Enter the request amount:
+            </label>
+            
+            <div class="field has-addons">
+                <p class="control">
+                        <span class="select">
+                        <select>
+                            <option>ΞTH</option>
+                            <option>$  </option>
+                        </select>
+                        </span>
+                </p>
+                <div class="control" style="width: 75%;">
+                    <input id="borrow-input" class="input" type="text" placeholder="Amount of money">
+                </div>
+            </div>
+        </div>
+
+        <div class="center-div" style="margin: auto; width: 50%; padding-top: 2%;">
+            <label class="label" style="font-size: 24px; color: white;"> 
+                Enter the expected interest rate (%):
+            </label>
+            
+            <div class="field has-addons">
+                <div class="control" style="width: 87.2%;">
+                    <input class="input" type="number" placeholder="Expected interest rate (%)">
+                </div>
+            </div>
+        </div>
+
+        <div class="center-div" style="margin: auto; width: 50%; padding-top: 2%;">
+            <label class="label" style="font-size: 24px; color: white;"> 
+                Enter the purpose of the loan:
+            </label>
+            
+            <div class="field has-addons">
+                <div class="control" style="width: 87.1%;">
+                    <input class="input" type="text" placeholder="Purpose">
+                </div>
+            </div>
+        </div>
+
+        <div class="center-div" style="margin: auto; width: 50%; padding-top: 2%;">
+            <label class="label" style="font-size: 24px; color: white;"> 
+                Enter the Maturity of the loan:
+            </label>
+            
+            <div class="field has-addons">
+                <p class="control">
+                    <span class="select">
+                    <select>
+                        <option>Days </option>
+                        <option>Month(s) </option>
+                        <option>Year(s) </option>
+                    </select>
+                    </span>
+                </p>
+                <div class="control" style="width: 70.2%;">
+                    <input class="input" type="number" placeholder="Maturity">
+                </div>
+            </div>
+        </div>
+
+        <div class="center-div" style="margin: auto; width: 50%; padding-top: 0.5%;">
+            <label class="label" style="font-size: 16px; color: white;"> The maturity should be at least 15 days. </label>
+        </div>
+
+        <div class="center-div" style="margin: auto; width: 50%; padding-top: 2.5%;">
+            <label class="checkbox" style="font-size: 16px; color: white">
+                <input type="checkbox">
+                I agree to the post request to the platform.
+            </label>
+        </div>
+
+        <div class="center-div" style="margin: auto; width: 50%; padding-top: 2.5%;">
+            <a class="button is-link is-inverted" onclick="App.requestLoan()"> Process Request! </a>
+        </div>
+
+        <div class="center-div" style="margin: auto; width: 50%; padding-top: 2.5%;">
+            <p> </p>
+        </div>
+    </div>
+
+</footer>
+  </body>
 </html>
