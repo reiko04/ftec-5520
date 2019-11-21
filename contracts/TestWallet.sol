@@ -1,4 +1,4 @@
-pragma solidity ^0.4.11;
+pragma solidity ^0.5.0;
 contract TestWallet {
 
     event Deposit(address indexed sender, uint value);
@@ -7,24 +7,24 @@ contract TestWallet {
     mapping (uint => Transaction) public transactions;
     uint public transactionCount;
     struct Transaction {
-        address destination;
+        address payable destination;
         uint value;
         bytes data;
         bool executed;
     }
     function()
-        public
+        external
         payable
     {
         if (msg.value > 0)
-            Deposit(msg.sender, msg.value);
+            emit Deposit(msg.sender, msg.value);
     }
-    function TestWallet()
+    constructor()
         public
     {
         
     }
-    function submitTransaction(address destination, uint value, bytes data)
+    function submitTransaction(address payable destination, uint value, bytes memory data)
         public
         returns (uint transactionId)
     {
@@ -35,11 +35,13 @@ contract TestWallet {
     {
         Transaction storage txToExecute = transactions[transactionId];
         txToExecute.executed = true;
-        if (txToExecute.destination.call.value(txToExecute.value)(txToExecute.data))
-            Execution(transactionId);
+        address payable addr = txToExecute.destination;
+        (bool x, ) = addr.call.value(txToExecute.value)(txToExecute.data);
+        if (x)
+            emit Execution(transactionId);
             
     }
-    function addTransaction(address destination, uint value, bytes data)
+    function addTransaction(address payable destination, uint value, bytes memory data)
     internal
     returns (uint transactionId)
     {
