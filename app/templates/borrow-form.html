@@ -15,33 +15,26 @@
   <body>
    <!-- NAVBAR -->
     <nav class="navbar" role="navigation" aria-label="dropdown navigation">
-      <a href="home.html" class="navbar-item">
-        <b>Poor Complex</b>
+    <a href="borrowtransaction.html" class="navbar-item">
+      <b>Back</b>
+     </a>
+  
+    <div class="navbar-item">
+      <a href="login.html" class="navbar-item">
+        <b>Log out</b>
       </a>
+    </div>
     
-      <div class="navbar-item">
-        <a href="lender.html" class="navbar-item">
-          Lender
-        </a>
-      </div>
-
-      <div class="navbar-item">
-        <a href="borrower.html" class="navbar-item">
-          Borrower
-        </a>
-      </div>
-    </nav>
+  </nav>
 
     <div class="container">
-
-        <div class="center-div" style="margin: auto; width: 50%; padding-top: 5%;">
-            <p class="title" style="color: white;">
+        <header>
+        <div class="center-div" style="margin: auto; width: 30%; padding-top: 3%;">
+            <p class="title" style="font-size: 30px;color: white;">
                 Borrowers Request
             </p>
-            <p class="subtitle" style="color: white;">
-                Need money quick? Get money at a great rate.
-            </p>
         </div>
+        </header>>
 
         <div class="center-div" style="margin: auto; width: 50%; padding-top: 3%;">
             <label class="label" style="font-size: 24px; color: white;"> 
@@ -57,48 +50,75 @@
                         </select>
                         </span>
                 </p>
-                <div class="control" style="width: 65%;">
+                <div class="control" style="width: 75%;">
                     <input id="borrow-input" class="input" type="text" placeholder="Amount of money">
                 </div>
             </div>
         </div>
 
-        <div class="center-div" style="margin: auto; width: 50%; padding-top: 3%;">
+        <div class="center-div" style="margin: auto; width: 50%; padding-top: 2%;">
             <label class="label" style="font-size: 24px; color: white;"> 
-                Enter the length of the loan:
+                Enter the expected interest rate (%):
+            </label>
+            
+            <div class="field has-addons">
+                <div class="control" style="width: 87.2%;">
+                    <input class="input" type="number" placeholder="Expected interest rate (%)">
+                </div>
+            </div>
+        </div>
+
+        <div class="center-div" style="margin: auto; width: 50%; padding-top: 2%;">
+            <label class="label" style="font-size: 24px; color: white;"> 
+                Enter the purpose of the loan:
+            </label>
+            
+            <div class="field has-addons">
+                <div class="control" style="width: 87.1%;">
+                    <input class="input" type="text" placeholder="Purpose">
+                </div>
+            </div>
+        </div>
+
+        <div class="center-div" style="margin: auto; width: 50%; padding-top: 2%;">
+            <label class="label" style="font-size: 24px; color: white;"> 
+                Enter the Maturity of the loan:
             </label>
             
             <div class="field has-addons">
                 <p class="control">
                     <span class="select">
                     <select>
-                        <option>DD </option>
-                        <option>MM </option>
-                        <option>YY </option>
+                        <option>Days </option>
+                        <option>Month(s) </option>
+                        <option>Year(s) </option>
                     </select>
                     </span>
                 </p>
-                <div class="control" style="width: 65%;">
-                    <input class="input" type="number" placeholder="Length of time">
+                <div class="control" style="width: 70.2%;">
+                    <input class="input" type="number" placeholder="Maturity">
                 </div>
             </div>
         </div>
 
-        <div class="center-div" style="margin: auto; width: 50%; padding-top: 2.5%;">
-            <label class="label" style="font-size: 24px; color: white;"> Quoted interest rate: 7% </label>
+        <div class="center-div" style="margin: auto; width: 50%; padding-top: 0.5%;">
+            <label class="label" style="font-size: 16px; color: white;"> The maturity should be at least 15 days. </label>
         </div>
 
         <div class="center-div" style="margin: auto; width: 50%; padding-top: 2.5%;">
             <label class="checkbox" style="font-size: 16px; color: white">
                 <input type="checkbox">
-                I agree to the quoted interest rate.
+                I agree to the post request to the platform.
             </label>
         </div>
 
-        <div class="center-div" style="margin: auto; width: 50%; padding-top: 5%;">
+        <div class="center-div" style="margin: auto; width: 50%; padding-top: 2.5%;">
             <a class="button is-link is-inverted" onclick="App.requestLoan()"> Process Request! </a>
         </div>
 
+        <div class="center-div" style="margin: auto; width: 50%; padding-top: 2.5%;">
+            <p> </p>
+        </div>
     </div>
 
 
