@@ -26,38 +26,72 @@
     </div>
     
   </nav>
-      
-  <table class="table" style="width: 60%; max-width: 100%; margin-bottom: 1rem; background-color: transparent;">
-    <thead>
-            <h1 class="title" id="home-title">
-                    Borrower information
-            </h1>
-    </thead>
-    <div style="display:inline-block;float:left;">
-      <img src=".../images/anna.jpeg" width="90px" height="90px" />
-    </div>
-    <tbody style="display:inline-block;float:right;">
-      <tr>
-        <th>Name</th>
-        <td>Anna</td>
-        <th>Birthday</th>
-        <td>01.01</td>
-        <th>Credit Rating</th>
-        <td>🌟🌟🌟</td>
-      </tr>
-      <tr>
-        <th>University</th>
-        <td>CUHK</td>
-        <th>Student ID</th>
-        <td>1155132xxx</td>
-        <th>Major</th>
-        <td>Msc of Financial Technology</td>
-      </tr>
-    </tbody>
-  </table>
+  <p> </p>
+  <section class="section">
+  <div class="container">  
+  <div class="columns">
+    <div class="column">   
+     <div class="card" style="height:230px;">
+       <div class="card-content">
+       <table class="table" style="width: 80%; max-width: 100%; margin-bottom: 1rem; background-color: transparent;">
+         <thead>
+                 <p class="title" style="font-size: 30px;">
+                         Borrower information
+                 </p>
+         </thead>
+         <p> 
+             
+         </p>
+         <div style="display:inline-block;float:left">
+           <img src="../images/anna.jpeg" width="90px" height="90px" />
+         </div>
+         <tbody style="display:inline-block;float:right;">
+           <tr>
+             <th>Name</th>
+             <td>Anna</td>
+             <th>Birthday</th>
+             <td>01.01</td>
+             <th>Credit Rating</th>
+             <td>🌟🌟🌟</td>
+             <th>Account Balance</th>
+             <td>
+               <p class="info" id="port-val"></p>
+             </td>
+           </tr>
+           <tr>
+             <th>University</th>
+             <td>CUHK</td>
+             <th>Student ID</th>
+             <td>1155132xxx</td>
+             <th>Major</th>
+             <td>Msc of Financial Technology</td>
+             <th></th>
+             <td></td>
+           </tr>
+           <tr>
+                <th>Amount</th>
+                <td>111</td>
+                <th>Interest rate</th>
+                <td>10%</td>
+                <th>Purpose</th>
+                <td>Study</td>
+                <th>Time</th>
+                <td>2019/01/01 11:00</td>
+              </tr>
+         </tbody>
+       </table>
+       <p> </p>
+     </div>
+     </div>
+     </div>
+     </div>
+     </div>
+     </section>
+  <p> </p>
+  <p> </p>
             
 
-<footer class="card-footer">
+
     <div class="container">
         <header>
         <div class="center-div" style="margin: auto; width: 30%; padding-top: 3%;">
@@ -67,34 +101,16 @@
         </div>
         </header>
 
-        <div class="center-div" style="margin: auto; width: 50%; padding-top: 3%;">
-            <label class="label" style="font-size: 24px; color: white;"> 
-                Enter the request amount:
-            </label>
-            
-            <div class="field has-addons">
-                <p class="control">
-                        <span class="select">
-                        <select>
-                            <option>ΞTH</option>
-                            <option>$  </option>
-                        </select>
-                        </span>
-                </p>
-                <div class="control" style="width: 75%;">
-                    <input id="borrow-input" class="input" type="text" placeholder="Amount of money">
-                </div>
-            </div>
-        </div>
+        
 
         <div class="center-div" style="margin: auto; width: 50%; padding-top: 2%;">
             <label class="label" style="font-size: 24px; color: white;"> 
-                Enter the maximun interest rate (%):
+                Enter the minimum interest rate (%):
             </label>
             
             <div class="field has-addons">
                 <div class="control" style="width: 87.2%;">
-                    <input class="input" type="number" placeholder="Expected interest rate (%)">
+                    <input class="input" type="number" placeholder="Minimum interest rate (%)">
                 </div>
             </div>
         </div>
@@ -133,7 +149,7 @@
         </div>
 
         <div class="center-div" style="margin: auto; width: 50%; padding-top: 2.5%;">
-            <a class="button is-link is-inverted" onclick="App.requestLoan()"> Process Application! </a>
+            <a class="button is-link is-inverted" onclick="App.requestLoan()" href="lender.html"> Process Application! </a>
         </div>
 
         <div class="center-div" style="margin: auto; width: 50%; padding-top: 2.5%;">
@@ -141,6 +157,6 @@
         </div>
     </div>
 
-</footer>
+
   </body>
 </html>
