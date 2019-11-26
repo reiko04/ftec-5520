@@ -29,6 +29,8 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^2.28.0",
     "json-loader": "^0.5.4",
+    "mongodb": "^3.3.4",
+    "mongoose": "^5.7.12",
     "style-loader": "^0.13.1",
     "truffle-contract": "^1.1.11",
     "web3": "^0.20.0",
@@ -36,7 +38,12 @@
     "webpack-dev-server": "^2.11.5"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "dns": "^0.2.2",
     "element-ui": "^2.12.0",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "mongodb-core": "^3.2.7",
     "vue": "^2.6.10"
   }
 }

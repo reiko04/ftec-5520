@@ -47,16 +47,19 @@
                      </p>
                      <div class="ul-container" style="width:230px; height:80px;margin: auto;">
                        <ul>  
-             <li style="width:200px; height:40px;margin: auto;"><input type="text" placeholder="Username" style="width: 200px; height:25px"></li>
-             <li style="width:200px; height:40px;margin: auto;"><input type="password" placeholder="Password" style="width:200px; height:25px">
-             </li>
+            <div class="control" style="width:200px; height:40px;margin: auto;">
+              <input id="username" class="input" type="text" placeholder="Username" style="width: 200px; height:25px">
+            </div>
+             <div class="control" style="width:200px; height:40px;margin: auto;">
+              <input id="pwd" class="input" type="password" placeholder="Password" style="width:200px; height:25px">
+             </div>
              </ul>
                      </div>
                    </div>
                    <footer class="card-footer">
                      <p class="card-footer-item">
                        <span>
-               <a class="button is-link is-outlined" href="borrowtransaction.html"> login ! </a>
+               <a class="button is-link is-outlined" onclick="App.login()"> login ! </a>
                        </span>
                      </p>
                    </footer>

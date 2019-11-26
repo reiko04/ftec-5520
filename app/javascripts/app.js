@@ -6,11 +6,20 @@ import "../css/lender.css"
 
 // Import libraries we need.
 import { default as Web3 } from 'web3';
-import { default as contract } from 'truffle-contract'
+import { default as contract } from 'truffle-contract';
 
 // Import our contract artifacts and turn them into usable abstractions.
 import test_wallet_artifacts from '../../build/contracts/TestWallet.json'
 var TestWallet = contract(test_wallet_artifacts);
+
+// const mongoose = require('mongoose/browser');
+// const url = "mongodb+srv://ftec5520:ftec5520@esocluster-90004.mongodb.net/test?retryWrites=true&w=majority";
+
+// mongoose.connect(url, (err) => {
+//   if (err) throw err;
+//   console.log("Database connected!");
+//   db.close();
+// });
 
 var accounts;
 var account;
@@ -34,6 +43,7 @@ window.App = {
         return;
       }
 
+      // alert(accs.length);
       accounts = accs;
       account = accounts[0];
 
@@ -50,6 +60,20 @@ window.App = {
         console.error(error);
       }
     })
+  },
+
+  login: function () {
+    var self = this;
+
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("pwd").value;
+    console.log(username);
+    // window.location.href = "borrowtransaction.html";
+    if (username == "Anna") {
+      window.location.href = "borrowtransaction.html";
+    } else if (username == "Bobby") {
+      window.location.href = "lender.html";
+    }
   },
 
   depositLoan: function () {
@@ -74,7 +98,7 @@ window.App = {
   requestLoan: function () {
     var self = this;
     var amount = parseInt(document.getElementById("borrow-input").value);
-
+    console.log(amount);
     var meta;
     return TestWallet.deployed().then(function (instance) {
       meta = instance;

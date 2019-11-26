@@ -2,6 +2,8 @@ const path = require('path');
 var webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb+srv://ftec5520:ftec5520@esocluster-90004.mongodb.net/test?retryWrites=true&w=majority";
 
 module.exports = {
   entry: './app/javascripts/app.js',
