@@ -2,8 +2,6 @@ const path = require('path');
 var webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb+srv://ftec5520:ftec5520@esocluster-90004.mongodb.net/test?retryWrites=true&w=majority";
 
 module.exports = {
   entry: './app/javascripts/app.js',
@@ -23,6 +21,9 @@ module.exports = {
       { from: './app/templates/login.html', to: "login.html" }
     ]),
     new CopyWebpackPlugin([
+      { from: './app/templates/signup.html', to: "signup.html" }
+    ]),
+    new CopyWebpackPlugin([
       { from: './app/templates/lender.html', to: "lender.html" }
     ]),
     new CopyWebpackPlugin([
@@ -40,6 +41,17 @@ module.exports = {
       {
        test: /\.css$/,
        use: [ 'style-loader', 'css-loader' ]
+      },
+      {
+        test: /\.js$/,
+        include: [
+          /\/mongoose\//i,
+          /\/kareem\//i
+        ],
+        loader: 'babel-loader',
+        options: {
+          presets: ['es2015']
+        }
       }
     ],
     loaders: [
@@ -53,6 +65,17 @@ module.exports = {
           plugins: ['transform-runtime']
         }
       }
-    ]
-  }
+    ],
+  },
+  node: {
+    // Replace these Node.js native modules with empty objects, Mongoose's
+    // browser library does not use them.
+    // See https://webpack.js.org/configuration/node/
+    dns: 'empty',
+    fs: 'empty',
+    'module': 'empty',
+    net: 'empty',
+    tls: 'empty'
+  },
+  target: 'web'
 }

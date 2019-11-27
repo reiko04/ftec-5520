@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Borrower</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/borrower.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>    
+    <script type="text/script" src="../javascripts/borrower.js"></script>
+    <script src="./app.js"></script>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+        <a href="borrowtransaction.html" class="navbar-item">
+          <b>Back</b>
+         </a>
+      
+     
+    </nav>
+
+    <section class="section" style="position: relative">
+        <div class="container">
+          <div class="column">
+              <div class="center-div" style="width: 50%; padding-top: 2%;">
+            <div class="title-container">
+              <h1 class="title" id="home-title" style="color:white">
+                  Do you want to be a borrower or a lender?
+              </h1>
+            </div>
+          </div>
+          </div>
+          
+    
+           
+                  
+                    <div class="center-div" style="display: inline; float:left;width: 53%; padding-top: 1%;">
+                            <label class="checkbox" style="font-size: 20px; color: white;">
+                                <input type="checkbox" onclick="lender1.disabled=this.checked;lender2.disabled=this.checked;lender3.disabled=this.checked;lender4.disabled=this.checked;">
+                                I want to borrow money.
+                            </label>
+                        </div>
+
+                                    
+                    <div class="center-div" style="display: inline; float:right; width: 47%; padding-top: 1%;">
+                            <label class="checkbox" style="font-size: 20px; color: white">
+                                <input type="checkbox" onclick="borrow1.disabled=this.checked;borrow2.disabled=this.checked;borrow3.disabled=this.checked;borrow4.disabled=this.checked;borrow5.disabled=this.checked;borrow6.disabled=this.checked;">
+                                I want to lend money.
+                            </label>
+                        </div>
+
+
+            <div class="columns" >
+              <div class="column" style="padding-top:3%">           
+               <div class="card" style="display:inline-block;float:left;height:450px;width:630px;">
+                 <div class="card-content">
+                    
+                  <div class="center-div" style="display:inline-block; width: 50%; padding-top: 2.5%;">
+                    <label class="label" style="font-size: 16px; color:black;"> 
+                        Birthday
+                    </label>
+                    <div class="field has-addons">
+                        <div class="control" style="width: 80%;">
+                            <input class="input" id="borrow1" type="date" placeholder="Year/Month/Day">
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="center-div" style="display:inline-block;float:left; width: 50%; padding-top: 2.5%;">
+                  <label class="label" style="font-size: 16px; color:black;"> 
+                      Name
+                  </label>
+                  <div class="field has-addons">
+                      <div class="control" style="width: 80%;">
+                          <input class="input" id="borrow2" type="text" placeholder="Name">
+                      </div>
+                  </div>
+                  
+              </div>
+
+            <div class="center-div" style="display:inline-block;float:left; width: 50%; padding-top: 2%;">
+                <label class="label" style="font-size: 16px; color:black;"> 
+                    University
+                </label>
+                <div class="field has-addons">
+                    <div class="control" style="width: 80%;">
+                        <input class="input" id="borrow3" type="text" placeholder="University">
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="center-div" style="display:inline-block;float:left; width: 50%; padding-top: 2%;">
+              <label class="label" style="font-size: 16px; color:black;"> 
+                  Student ID
+              </label>
+              <div class="field has-addons">
+                  <div class="control" style="width: 80%;">
+                      <input class="input" id="borrow4" type="number" placeholder="Student ID">
+                  </div>
+              </div>
+              
+          </div>
+
+          <div class="center-div" style="display:inline-block;float:left; width: 50%; padding-top: 2%;">
+              <label class="label" style="font-size: 16px; color:black;"> 
+                  Major
+              </label>
+              <div class="field has-addons">
+                  <div class="control" style="width: 80%;">
+                      <input class="input" id="borrow5" type="number" placeholder="Major">
+                  </div>
+              </div>
+              
+          </div>
+
+          <div class="center-div" style=" display:inline-block;float:left;width: 80%; padding-top: 8%;">
+                <label class="label" style="font-size: 16px; color:black;"> 
+                    Upload Your Photo
+                </label>
+                <div class="field has-addons">
+                    <div class="control" style="width: 80%;">
+                        <input class="file" id="borrow6" type="file" placeholder="Profile">
+                    </div>
+                </div> 
+            </div>
+        
+        
+               </div>
+               </div>
+
+               
+             
+
+        
+               <div class="card" style="display:inline-block;float:right;height:450px;width:630px;">
+                 <div class="card-content">
+                    
+                  <div class="center-div" style="display:inline-block; width: 50%; padding-top: 2.5%;">
+                    <label class="label" style="font-size: 16px; color:black;"> 
+                        Birthday
+                    </label>
+                    <div class="field has-addons">
+                        <div class="control" style="width: 80%;">
+                            <input class="input" id="lender1" type="date" placeholder="Year/Month/Day">
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="center-div" style="display:inline-block;float:left; width: 50%; padding-top: 2.5%;">
+                  <label class="label" style="font-size: 16px; color:black;"> 
+                      Name
+                  </label>
+                  <div class="field has-addons">
+                      <div class="control" style="width: 80%;">
+                          <input class="input" id="lender2" type="text" placeholder="Name">
+                      </div>
+                  </div>
+                  
+              </div>
+
+            <div class="center-div" style="display:inline-block;float:left; width: 50%; padding-top: 2%;">
+                <label class="label" style="font-size: 16px; color:black;"> 
+                    Occupation
+                </label>
+                <div class="field has-addons">
+                    <div class="control" style="width: 80%;">
+                        <input class="input" id="lender3" type="text" placeholder="Occupation">
+                    </div>
+                </div> 
+            </div>
+
+            <div class="center-div" style=" display:inline-block;float:left;width: 80%; padding-top: 21.2%;">
+                <label class="label" style="font-size: 16px; color:black;"> 
+                    Upload Your Photo
+                </label>
+                <div class="field has-addons">
+                    <div class="control" style="width: 80%;">
+                        <input class="file" id="lender4" type="file" placeholder="Profile">
+                    </div>
+                </div> 
+            </div>
+        
+               </div>
+               </div>
+              </div>
+            </div>
+            </div>
+            </section>
+
+           
+     <div class="center-div" style="margin: auto; width: 6%; padding-top: 2.5%;">
+            <a class="button is-link is-inverted" onclick="App.requestLoan()" href="borrowtransaction.html"> Sign Up! </a>
+        </div>
+    
+    
+          
+  </body>
+
+
+</html>

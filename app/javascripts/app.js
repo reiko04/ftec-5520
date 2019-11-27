@@ -12,10 +12,11 @@ import { default as contract } from 'truffle-contract';
 import test_wallet_artifacts from '../../build/contracts/TestWallet.json'
 var TestWallet = contract(test_wallet_artifacts);
 
+// var MongoClient = require('mongodb').MongoClient;
 // const mongoose = require('mongoose/browser');
-// const url = "mongodb+srv://ftec5520:ftec5520@esocluster-90004.mongodb.net/test?retryWrites=true&w=majority";
+var url = "mongodb+srv://ftec5520:ftec5520@esocluster-90004.mongodb.net/test?retryWrites=true&w=majority";
 
-// mongoose.connect(url, (err) => {
+// MongoClient.connect(url, (err) => {
 //   if (err) throw err;
 //   console.log("Database connected!");
 //   db.close();

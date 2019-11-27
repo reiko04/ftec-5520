@@ -44,6 +44,8 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "mongodb-core": "^3.2.7",
+    "mongodb-prebuilt": "^6.5.0",
+    "nan": "^2.14.0",
     "vue": "^2.6.10"
   }
 }
