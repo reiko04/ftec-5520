@@ -77,5 +77,21 @@ module.exports = {
     net: 'empty',
     tls: 'empty'
   },
-  target: 'web'
+  devServer: {
+    port: 8080,
+    // host: '0.0.0.0',
+    headers: {
+      'X-foo': '112233'
+    },
+    inline: true,
+    overlay: true,
+    stats: 'errors-only',
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:3001',
+        changeOrigin: true  // 是否跨域
+      }
+    }
+  }
+  
 }

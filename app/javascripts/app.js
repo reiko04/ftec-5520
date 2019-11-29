@@ -11,16 +11,7 @@ import { default as contract } from 'truffle-contract';
 // Import our contract artifacts and turn them into usable abstractions.
 import test_wallet_artifacts from '../../build/contracts/TestWallet.json'
 var TestWallet = contract(test_wallet_artifacts);
-
-// var MongoClient = require('mongodb').MongoClient;
-// const mongoose = require('mongoose/browser');
-var url = "mongodb+srv://ftec5520:ftec5520@esocluster-90004.mongodb.net/test?retryWrites=true&w=majority";
-
-// MongoClient.connect(url, (err) => {
-//   if (err) throw err;
-//   console.log("Database connected!");
-//   db.close();
-// });
+var request = new XMLHttpRequest();
 
 var accounts;
 var account;
@@ -61,6 +52,51 @@ window.App = {
         console.error(error);
       }
     })
+  },
+
+  signup: async function () {
+    var borrow = document.getElementById("check-borrow").checked;
+    var username = undefined;
+    var password = undefined;
+    var university = undefined;
+    var identity = undefined;
+    var occupation = undefined;
+    var studentID = undefined;
+    var body = {};
+    if (borrow) {
+      username = document.getElementById("username-borrower").value;
+      password = document.getElementById("password-borrower").value;
+      identity = "borrower";
+      university = document.getElementById("university").value;
+      studentID = document.getElementById("studentId").value;
+      body = {
+        username:username,
+        password:password,
+        identity:identity,
+        university:university,
+        studentID:studentID
+      }
+    } else {
+      username = document.getElementById("username-lender").value;
+      password = document.getElementById("password-lender").value;
+      identity = "lender";
+      occupation = document.getElementById("occupation").value;
+      body = {
+        username:username,
+        password:password,
+        identity:identity,
+        occupation:occupation
+      }
+    }
+    console.log(body);
+    await fetch("/api/signup", {
+      method: "POST", 
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    }).then(res => {
+      console.log("Request complete! response:", res);
+    });
+    // window.location.href = "index.html";
   },
 
   login: function () {

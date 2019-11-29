@@ -36,50 +36,51 @@
     
            
                   
-                    <div class="center-div" style="display: inline; float:left;width: 53%; padding-top: 1%;">
-                            <label class="checkbox" style="font-size: 20px; color: white;">
-                                <input type="checkbox" onclick="lender1.disabled=this.checked;lender2.disabled=this.checked;lender3.disabled=this.checked;lender4.disabled=this.checked;">
-                                I want to borrow money.
-                            </label>
-                        </div>
+            <div class="center-div" style="display: inline; float:left;width: 53%; padding-top: 1%;">
+                    <label class="checkbox" style="font-size: 20px; color: white;">
+                        <input id="check-borrow" type="checkbox" >
+                        I want to borrow money.
+                    </label>
+                </div>
 
                                     
-                    <div class="center-div" style="display: inline; float:right; width: 47%; padding-top: 1%;">
-                            <label class="checkbox" style="font-size: 20px; color: white">
-                                <input type="checkbox" onclick="borrow1.disabled=this.checked;borrow2.disabled=this.checked;borrow3.disabled=this.checked;borrow4.disabled=this.checked;borrow5.disabled=this.checked;borrow6.disabled=this.checked;">
-                                I want to lend money.
-                            </label>
-                        </div>
+            <div class="center-div" style="display: inline; float:right; width: 47%; padding-top: 1%;">
+                    <label class="checkbox" style="font-size: 20px; color: white">
+                        <input id="ckeck-lend" type="checkbox" >
+                        I want to lend money.
+                    </label>
+                </div>
 
 
             <div class="columns" >
               <div class="column" style="padding-top:3%">           
-               <div class="card" style="display:inline-block;float:left;height:450px;width:630px;">
+               <div class="card" style="display:inline-block;float:left;height:450px;width:45%;">
                  <div class="card-content">
                     
                   <div class="center-div" style="display:inline-block; width: 50%; padding-top: 2.5%;">
                     <label class="label" style="font-size: 16px; color:black;"> 
-                        Birthday
+                        password
                     </label>
                     <div class="field has-addons">
                         <div class="control" style="width: 80%;">
-                            <input class="input" id="borrow1" type="date" placeholder="Year/Month/Day">
+                            <input class="input" id="password-borrower" type="password" placeholder="password">
                         </div>
                     </div>
                     
-                </div>
+                  </div>
 
                 <div class="center-div" style="display:inline-block;float:left; width: 50%; padding-top: 2.5%;">
                   <label class="label" style="font-size: 16px; color:black;"> 
-                      Name
+                      username
                   </label>
                   <div class="field has-addons">
                       <div class="control" style="width: 80%;">
-                          <input class="input" id="borrow2" type="text" placeholder="Name">
+                          <input id="username-borrower" class="input" type="text" placeholder="Name">
                       </div>
                   </div>
                   
-              </div>
+                </div>
+                
 
             <div class="center-div" style="display:inline-block;float:left; width: 50%; padding-top: 2%;">
                 <label class="label" style="font-size: 16px; color:black;"> 
@@ -87,7 +88,7 @@
                 </label>
                 <div class="field has-addons">
                     <div class="control" style="width: 80%;">
-                        <input class="input" id="borrow3" type="text" placeholder="University">
+                        <input class="input" id="university" type="text" placeholder="University">
                     </div>
                 </div>
                 
@@ -99,7 +100,7 @@
               </label>
               <div class="field has-addons">
                   <div class="control" style="width: 80%;">
-                      <input class="input" id="borrow4" type="number" placeholder="Student ID">
+                      <input class="input" id="studentId" type="text" placeholder="Student ID">
                   </div>
               </div>
               
@@ -111,7 +112,7 @@
               </label>
               <div class="field has-addons">
                   <div class="control" style="width: 80%;">
-                      <input class="input" id="borrow5" type="number" placeholder="Major">
+                      <input class="input" id="borrow5" type="text" placeholder="Major">
                   </div>
               </div>
               
@@ -119,7 +120,7 @@
 
           <div class="center-div" style=" display:inline-block;float:left;width: 80%; padding-top: 8%;">
                 <label class="label" style="font-size: 16px; color:black;"> 
-                    Upload Your Photo
+                    Upload Your Photo (Optional)
                 </label>
                 <div class="field has-addons">
                     <div class="control" style="width: 80%;">
@@ -136,16 +137,16 @@
              
 
         
-               <div class="card" style="display:inline-block;float:right;height:450px;width:630px;">
+               <div class="card" style="display:inline-block;float:right;height:450px;width:45%;">
                  <div class="card-content">
                     
                   <div class="center-div" style="display:inline-block; width: 50%; padding-top: 2.5%;">
                     <label class="label" style="font-size: 16px; color:black;"> 
-                        Birthday
+                        password
                     </label>
                     <div class="field has-addons">
                         <div class="control" style="width: 80%;">
-                            <input class="input" id="lender1" type="date" placeholder="Year/Month/Day">
+                            <input class="input" id="password-lender" type="password" placeholder="password">
                         </div>
                     </div>
                     
@@ -157,7 +158,7 @@
                   </label>
                   <div class="field has-addons">
                       <div class="control" style="width: 80%;">
-                          <input class="input" id="lender2" type="text" placeholder="Name">
+                          <input id="username-lender" class="input" type="text" placeholder="Name">
                       </div>
                   </div>
                   
@@ -169,14 +170,14 @@
                 </label>
                 <div class="field has-addons">
                     <div class="control" style="width: 80%;">
-                        <input class="input" id="lender3" type="text" placeholder="Occupation">
+                        <input class="input" id="occupation" type="text" placeholder="Occupation">
                     </div>
                 </div> 
             </div>
 
             <div class="center-div" style=" display:inline-block;float:left;width: 80%; padding-top: 21.2%;">
                 <label class="label" style="font-size: 16px; color:black;"> 
-                    Upload Your Photo
+                    Upload Your Photo (Optional)
                 </label>
                 <div class="field has-addons">
                     <div class="control" style="width: 80%;">
@@ -194,7 +195,7 @@
 
            
      <div class="center-div" style="margin: auto; width: 6%; padding-top: 2.5%;">
-            <a class="button is-link is-inverted" onclick="App.requestLoan()" href="borrowtransaction.html"> Sign Up! </a>
+            <a class="button is-link is-inverted" onclick="App.signup()"> Sign Up! </a>
         </div>
     
     
