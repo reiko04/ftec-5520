@@ -30,7 +30,7 @@ window.App = {
       }
 
       if (accs.length == 0) {
-        alert(accs); // for debug
+        // alert(accs); // for debug
         alert("Couldn't get any accounts! Make sure your Ethereum client is configured correctly.");
         return;
       }
@@ -39,8 +39,24 @@ window.App = {
       accounts = accs;
       account = accounts[0];
 
+      self.getUserInfo();
       self.getBalance();
     });
+  },
+
+  getUserInfo: function() {
+    var name = "username" + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) 
+    {
+      var c = ca[i].trim();
+      if (c.indexOf(name)==0) {
+        $("#login-username").text(c.substring(name.length,c.length));
+        return c.substring(name.length,c.length)
+      };
+    }
+    
+    return "";
   },
 
   getBalance: function () {
@@ -96,21 +112,43 @@ window.App = {
     }).then(res => {
       console.log("Request complete! response:", res);
     });
-    // window.location.href = "index.html";
+    window.location.href = "index.html";
   },
 
-  login: function () {
+  login: async function () {
     var self = this;
 
     var username = document.getElementById("username").value;
     var password = document.getElementById("pwd").value;
     console.log(username);
+    var body = {
+      username:username,
+      password:password
+    };
     // window.location.href = "borrowtransaction.html";
-    if (username == "Anna") {
+    var user = await fetch("/api/login", {
+      method: "POST", 
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    }).then(res => {
+      return res.text();
+    });
+    user = JSON.parse(user);
+    console.log(user);
+    if (!user) {
+      console.log("login error!");
+    } 
+    if (user.identity == "borrower") {
+      document.cookie = "username=" + user.username;
       window.location.href = "borrowtransaction.html";
-    } else if (username == "Bobby") {
+    } else if (user.identity == "lender") {
+      document.cookie = "username=" + user.username;
       window.location.href = "lender.html";
     }
+  },
+
+  logout: function () {
+    document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   },
 
   depositLoan: function () {

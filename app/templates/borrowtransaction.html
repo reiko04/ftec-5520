@@ -14,7 +14,7 @@
   <body>
    <!-- NAVBAR -->
     <nav class="navbar" role="navigation" aria-label="dropdown navigation">
-      <a href="login.html" class="navbar-item">
+      <a onclick="App.logout()" href="index.html" class="navbar-item">
         <b>Log out</b>
       </a>
     </nav>
@@ -52,7 +52,7 @@
              <tbody style="display:inline-block;float:right;">
                <tr>
                  <th>Name</th>
-                 <td>Anna</td>
+                 <td><p class="info" id="login-username"></p></td>
                  <th>Birthday</th>
                  <td>01.01</td>
                  <th>Credit Rating</th>
