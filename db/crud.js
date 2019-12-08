@@ -83,6 +83,26 @@ router.get('/getuserbyid', async(req, res) => {
   var userid = req.query.userid;
   user = await User.findById(userid);
   res.send(user);
-})
+});
+
+router.get('/getloan', async(req, res) => {
+  var borrower_name = req.query.borrower;
+  var lender_name = req.query.lender;
+  var established = req.query.established;
+  var loan = undefined;
+  console.log(req.query);
+  if (established == "true") {
+    if (borrower_name != undefined) {
+      var borrower = await User.findOne({username:borrower_name});
+      loan = await Record({borrower:borrower._id});
+    } else {
+      var lender = await User.findOne({username:lender_name});
+      loan = await Record({borrower:lender._id});
+    }
+  } else if (established == "false"){
+    loan = await Record.find();
+  }
+  res.send(loan);
+});
 
 module.exports = router

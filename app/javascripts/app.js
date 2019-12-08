@@ -45,6 +45,9 @@ window.App = {
       if (window.location.href == "http://localhost:8080/borrowtransaction.html") {
         self.listBorrowRequest();
       }
+      if (window.location.href == "http://localhost:8080/lender.html") {
+        self.listAvailableLoan();
+      }
     });
   },
 
@@ -222,6 +225,51 @@ window.App = {
       }
     }
   
+  },
+
+  listAvailableLoan: async function () {
+    var self = this;
+    var records = await fetch("/api/getloan?established=false", {
+      method: "GET", 
+      headers: { "Content-Type": "application/json" }
+    }).then(res => {
+      return res.text();
+    });
+    records = JSON.parse(records);
+    console.log(records);
+    for (var i = 0, len = records.length; i < len; i++) {
+      var record = records[i];
+      if (record.lender != undefined) {
+        continue;
+      }
+      // console.log(record);
+      var borrower_name = "";
+      var interest_rate = record.interestRate;
+      var purpose = record.purpose;
+      var maturity = record.maturity;
+      
+      if (record.borrower != undefined) {
+        var borrow_id = record.borrower;
+        var borrower = await fetch("/api/getuserbyid?userid="+borrow_id, {
+          method: "GET", 
+          headers: { "Content-Type": "application/json" }
+        }).then(res => {
+          return res.text();
+        });
+        console.log(borrower);
+        borrower = JSON.parse(borrower);
+        borrower_name = borrower.username;
+        status = "Borrowing";
+      }
+      var $new = $("<li><div></div><div></div><div></div><div></div><div></div></li>");
+      console.log($new);
+      $new.find("div").eq(0).text(borrower_name);
+      $new.find("div").eq(1).text(interest_rate);
+      $new.find("div").eq(2).text(purpose);
+      $new.find("div").eq(3).text(maturity);
+
+      $("#available-loan").append($new);
+    }
   },
 
   logout: function () {
