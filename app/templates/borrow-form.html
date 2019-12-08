@@ -51,7 +51,7 @@
                         </span>
                 </p>
                 <div class="control" style="width: 75%;">
-                    <input id="borrow-input" class="input" type="text" placeholder="Amount of money">
+                    <input id="amount" id="borrow-input" class="input" type="text" placeholder="Amount of money">
                 </div>
             </div>
         </div>
@@ -63,7 +63,7 @@
             
             <div class="field has-addons">
                 <div class="control" style="width: 87.2%;">
-                    <input class="input" type="number" placeholder="Expected interest rate (%)">
+                    <input id="interest" class="input" type="number" placeholder="Expected interest rate (%)">
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@
             
             <div class="field has-addons">
                 <div class="control" style="width: 87.1%;">
-                    <input class="input" type="text" placeholder="Purpose">
+                    <input id="purpose" class="input" type="text" placeholder="Purpose">
                 </div>
             </div>
         </div>
@@ -96,7 +96,7 @@
                     </span>
                 </p>
                 <div class="control" style="width: 70.2%;">
-                    <input class="input" type="number" placeholder="Maturity">
+                    <input id="maturity" class="input" type="number" placeholder="Maturity">
                 </div>
             </div>
         </div>
@@ -113,7 +113,7 @@
         </div>
 
         <div class="center-div" style="margin: auto; width: 50%; padding-top: 2.5%;">
-            <a class="button is-link is-inverted" onclick="App.requestLoan()" href="lend-form.html"> Process Request! </a>
+            <a class="button is-link is-inverted" onclick="App.postBorrowRequest()"> Process Request! </a>
         </div>
 
         <div class="center-div" style="margin: auto; width: 50%; padding-top: 2.5%;">

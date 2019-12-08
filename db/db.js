@@ -1,6 +1,9 @@
 var mongoose = require('mongoose');
 var DB_URL = 'mongodb+srv://ftec5520:ftec5520@esocluster-90004.mongodb.net/test?retryWrites=true&w=majority';
 
+var Schema = mongoose.Schema,
+    ObjectId = Schema.ObjectId;
+
 /* 链接 */
 mongoose.connect(DB_URL);
 

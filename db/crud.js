@@ -4,6 +4,7 @@ const router = express.Router();
 var app = express();
 var bodyParser = require('body-parser');
 const User = require('./user');
+const Record = require('./record')
 
 router.use(bodyParser.json());
 
@@ -45,5 +46,43 @@ router.post('/login', async (req, res) => {
   console.log(user);
   res.send(user);
 });
+
+router.post('/postborrowrecord',async(req, res) => {
+  console.log(req.body);
+  var borrower = undefined;
+  if (req.body.borrower != undefined) {
+    borrower = await User.findOne({username:req.body.borrower}).exec();
+    console.log(borrower);
+  }
+  const record = new Record ({
+    borrower: borrower._id,
+    interestRate: req.body.interest,
+    amount : req.body.amount,
+    purpose : req.body.purpose,
+    maturity: req.body.maturity
+  });
+  record.save((err, docs) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send({ "code": 0, 'message': '新增成功' });
+    }
+  });
+});
+
+router.get('/getborrowrecord', async(req, res) => {
+  console.log(req.query);
+  var username = req.query.username;
+  user = await User.findOne({username:username}).exec();
+  records = await Record.find({borrower:user._id});
+  console.log(records);
+  res.send(records);
+});
+
+router.get('/getuserbyid', async(req, res) => {
+  var userid = req.query.userid;
+  user = await User.findById(userid);
+  res.send(user);
+})
 
 module.exports = router

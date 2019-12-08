@@ -10,6 +10,7 @@ import { default as contract } from 'truffle-contract';
 
 // Import our contract artifacts and turn them into usable abstractions.
 import test_wallet_artifacts from '../../build/contracts/TestWallet.json'
+import { stat } from "fs";
 var TestWallet = contract(test_wallet_artifacts);
 var request = new XMLHttpRequest();
 
@@ -39,19 +40,23 @@ window.App = {
       accounts = accs;
       account = accounts[0];
 
-      self.getUserInfo();
+      self.getUserInfo("username");
       self.getBalance();
+      if (window.location.href == "http://localhost:8080/borrowtransaction.html") {
+        self.listBorrowRequest();
+      }
     });
   },
 
-  getUserInfo: function() {
-    var name = "username" + "=";
+  getUserInfo: function(type) {
+    var name = type + "=";
     var ca = document.cookie.split(';');
     for(var i=0; i<ca.length; i++) 
     {
       var c = ca[i].trim();
       if (c.indexOf(name)==0) {
-        $("#login-username").text(c.substring(name.length,c.length));
+        if (type == "username")
+          $("#login-username").text(c.substring(name.length,c.length));
         return c.substring(name.length,c.length)
       };
     }
@@ -62,7 +67,7 @@ window.App = {
   getBalance: function () {
     return web3.eth.getBalance(account, function (error, result) {
       if (!error) {
-        console.log(result.toNumber());
+        // console.log(result.toNumber());
         $("#port-val").text(web3.fromWei(result, "ether").toFixed(3));
       } else {
         console.error(error);
@@ -117,7 +122,6 @@ window.App = {
 
   login: async function () {
     var self = this;
-
     var username = document.getElementById("username").value;
     var password = document.getElementById("pwd").value;
     console.log(username);
@@ -139,16 +143,89 @@ window.App = {
       console.log("login error!");
     } 
     if (user.identity == "borrower") {
-      document.cookie = "username=" + user.username;
+      document.cookie = "username=" + user.username
+      document.cookie = "identity=" + "borrower";
       window.location.href = "borrowtransaction.html";
     } else if (user.identity == "lender") {
-      document.cookie = "username=" + user.username;
+      document.cookie = "username=" + user.username+ + ";" + "identity=" + "lender";;
       window.location.href = "lender.html";
     }
   },
 
+  postBorrowRequest: async function() {
+    var self = this;
+    var username = self.getUserInfo();
+    var amount = document.getElementById("amount").value;
+    var interest = document.getElementById("interest").value;
+    var purpose = document.getElementById("purpose").value;
+    var maturity = document.getElementById("maturity").value;
+    var body = {
+      borrower: username,
+      amount: amount,
+      interest: interest,
+      purpose: purpose,
+      maturity: maturity
+    };
+    await fetch("api/postborrowrecord", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    }).then(res => {
+      console.log("Request complete! response:", res);
+    });
+    window.location.href = "borrowtransaction.html";
+  },
+
+  listBorrowRequest: async function() {
+    var self = this;
+    var username = self.getUserInfo("username");
+    var identity = self.getUserInfo("identity");
+    if (username != undefined && identity == "borrower") {
+      // console.log("finding...")
+      var records = await fetch("/api/getborrowrecord?username="+username, {
+        method: "GET", 
+        headers: { "Content-Type": "application/json" }
+      }).then(res => {
+        return res.text();
+      });
+      records = JSON.parse(records);
+      // console.log(records);
+      for (var i = 0, len = records.length; i < len; i++) {
+        var record = records[i];
+        // console.log(record);
+        var lender_name = "";
+        var status = "Requesting";
+        var interest_rate = record.interestRate;
+        var purpose = record.purpose;
+        var maturity = record.maturity;
+        
+        if (record.lender != undefined) {
+          var lender_id = record.lender;
+          var lender = await fetch("/api/getuserbyid?userid="+lender_id, {
+            method: "GET", 
+            headers: { "Content-Type": "application/json" }
+          }).then(res => {
+            return res.text();
+          });
+          lender_name = lender.username;
+          status = "Borrowing";
+        }
+        var $new = $("<li><div></div><div></div><div></div><div></div><div></div></li>");
+        console.log($new);
+        $new.find("div").eq(0).text(status);
+        $new.find("div").eq(1).text(lender_name);
+        $new.find("div").eq(2).text(interest_rate);
+        $new.find("div").eq(3).text(purpose);
+        $new.find("div").eq(4).text(maturity);
+
+        $("#request-record").append($new);
+      }
+    }
+  
+  },
+
   logout: function () {
-    document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "username=; identity=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   },
 
   depositLoan: function () {
