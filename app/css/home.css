@@ -24,10 +24,10 @@ ul {
 }
 
 nav{
-    background: #0077aa;
-            background: -webkit-linear-gradient(left,#0077aa,#19aaaa);
-            background: -moz-linear-gradient(left,#0077aa,#19aaaa);
-            background: linear-gradient(left,#0077aa,#19aaaa);
+    background: #bd0101;
+            background: -webkit-linear-gradient(left,#bd0101,#ad6666);
+            background: -moz-linear-gradient(left,#bd0101,#ad6666);
+            background: linear-gradient(left,#bd0101,#ad6666);
 }
 .navbar-item{
     color:white;
@@ -40,10 +40,10 @@ li {
 }
 
 body {
-    background: #0077aa;
-            background: -webkit-linear-gradient(left,#0077aa,#19aaaa);
-            background: -moz-linear-gradient(left,#0077aa,#19aaaa);
-            background: linear-gradient(left,#0077aa,#19aaaa);
+    background: #bd0101;
+            background: -webkit-linear-gradient(left,#bd0101,#ad6666);
+            background: -moz-linear-gradient(left,#bd0101,#ad6666);
+            background: linear-gradient(left,#bd0101,#ad6666);
     
     min-height: 100vh;
 }

@@ -5,7 +5,7 @@
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Poor Complex</title>
+    <title>P2P Campus</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>    
@@ -24,10 +24,10 @@
       <div class="column">
         <div class="title-container">
           <h1 class="title" id="home-title">
-              Decentralizing How We Lend
+              P2P Campus Loan
           </h1>
           <p class="subtitle" id="home-subtitle">
-            Built on the Ethereum blockchian
+            Based on Ethereum blockchain
           </p>
         </div>
       </div>
@@ -84,66 +84,39 @@
                 </div>
                 <p class="card-footer-item" style="display:inline-block; float:right;">
                     <span>
+                        <a class="button is-link is-outlined"  onclick="App.listAvailableLoan()"> Refresh </a>
+                    </span>
+                    <span>
                         <a class="button is-link is-outlined" href="borrow-form.html"> Apply Now! </a>
                     </span>
                 </p>
+                
                 </header>
                 <table class="table" style="width: 100%; max-width: 100%; margin-bottom: 1rem; background-color: transparent;">
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>Amount</th>
+                      <th>Borrower</th>
                       <th>Interest Rate</th>
                       <th>Purpose</th>
                       <th>Maturity</th>
-                      <th>Time</th>
-                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>2333</td>
-                      <td>10%</td>
-                      <td>@mdo</td>
-                      <td>100 days</td>
-                      <td>2019/10/25 11:00</td>
-                      <td>
-                          <button class="btn">check</button>
-                        </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>9293</td>
-                      <td>6%</td>
-                      <td>@fat</td>
-                      <td>180 days</td>
-                      <td>2019/11/09 19:37</td>
-                      <td>
-                          <button class="btn">check</button>
-                        </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>888</td>
-                      <td>11%</td>
-                      <td>@twitter</td>
-                      <td>90 days</td>
-                      <td>2019/11/20 15:28</td>
-                      <td>
-                          <button class="btn">check</button>
-                        </td>
+                      <tr>
+                        <th id="available-loan0"></th>
+                        <th id="available-loan1"></th>
+                        <th id="available-loan2"></th>
+                        <th id="available-loan3"></th>
                     </tr>
                   </tbody>
                 </table>
+                
               </div>
               </div>
         </div>
       </div>
 
-      <div id="available-loan">
-
-      </div>
+    
 
   </section>
   </body>

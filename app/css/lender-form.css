@@ -106,10 +106,10 @@ body {
     border-radius: 50%;
   }
   .range-labels .active {
-    color: #37adbf;
+    color: #ad6666;
   }
   .range-labels .selected::before {
-    background: #37adbf;
+    background: #ad6666;
   }
   .range-labels .active.selected::before {
     display: none;

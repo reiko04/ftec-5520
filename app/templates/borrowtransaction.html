@@ -5,7 +5,7 @@
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Poor Complex</title>
+    <title>P2P Campus</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>    
@@ -22,16 +22,16 @@
 
   <section class="section">
     <div class="container">
-      <div class="column">
-        <div class="title-container">
-          <h1 class="title" id="home-title">
-              Decentralizing How We Lend
-          </h1>
-          <p class="subtitle" id="home-subtitle">
-            Built on the Ethereum blockchian
-          </p>
-        </div>
-      </div>
+        <div class="column">
+            <div class="title-container">
+              <h1 class="title" id="home-title">
+                  P2P Campus Loan
+              </h1>
+              <p class="subtitle" id="home-subtitle">
+                Based on Ethereum blockchain
+              </p>
+            </div>
+          </div>
 
       <div class="columns">
         <div class="column">   
@@ -81,7 +81,7 @@
 
       <div id="lender-application" class="columns">
         <div class="column"> 
-            <div class="card" style="height:500px;">
+            <div class="card" style="height:300px;">
                 <div class="card-content">
                     <header>
                 <div style="display:inline-block;float:left;">
@@ -94,11 +94,7 @@
                         <a class="button is-link is-outlined" href="borrow-form.html"> Apply Now! </a>
                     </span>
                 </p>
-                <p class="card-footer-item" style="display:inline-block; float:right">
-                    <span>
-                        <a class="button is-link is-outlined" href="borrower.html" style="color:brown";> Some lenders are applying for your loan! </a>
-                    </span>
-                </p>
+               
                 </header>
                 
                 <table class="table" style="width: 100%; max-width: 100%; margin-bottom: 1rem; background-color: transparent;">
@@ -150,8 +146,45 @@
         </div>
       </div>
 
-      <div id="request-record">
-        
+      <div id="request-record" class="columns">
+          <div class="column"> 
+              <div class="card" style="height:300px;">
+                  <div class="card-content">
+                      <header>
+                  <div style="display:inline-block;float:left;">
+                    <p class="title" style="float:left;">
+                      Request Record
+                    </p>
+                  </div>
+                  <p class="card-footer-item" style="display:inline-block; float:right;">
+                      <span>
+                          <a class="button is-link is-outlined"  onclick="App.listBorrowRequest()"> Refresh </a>
+                      </span>
+                  </p>
+                 
+                  </header>
+                  
+                  <table class="table" style="width: 100%; max-width: 100%; margin-bottom: 1rem; background-color: transparent;">
+                    <thead>
+                      <tr>
+                        <th>Status</th>
+                        <th>Lender Name</th>
+                        <th>Interest Rate</th>
+                        <th>Purpose</th>
+                        <th>Maturity</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                          <th id="request-record0"></th>
+                          <th id="request-record1"></th>
+                          <th id="request-record2"></th>
+                          <th id="request-record3"></th>
+                          <th id="request-record4"></th>
+                      </tr>
+                    </tbody>
+            
       </div>
    
 

@@ -221,7 +221,11 @@ window.App = {
         $new.find("div").eq(3).text(purpose);
         $new.find("div").eq(4).text(maturity);
 
-        $("#request-record").append($new);
+        $("#request-record0").append($new.find("div").eq(0).text(status));
+        $("#request-record1").append($new.find("div").eq(1).text(lender_name));
+        $("#request-record2").append($new.find("div").eq(2).text(interest_rate));
+        $("#request-record3").append($new.find("div").eq(3).text(purpose));
+        $("#request-record4").append($new.find("div").eq(4).text(maturity));
       }
     }
   
@@ -261,14 +265,17 @@ window.App = {
         borrower_name = borrower.username;
         status = "Borrowing";
       }
-      var $new = $("<li><div></div><div></div><div></div><div></div><div></div></li>");
+      var $new = $("<li><div></div><div></div><div></div><div></div></li>");
       console.log($new);
       $new.find("div").eq(0).text(borrower_name);
       $new.find("div").eq(1).text(interest_rate);
       $new.find("div").eq(2).text(purpose);
       $new.find("div").eq(3).text(maturity);
 
-      $("#available-loan").append($new);
+      $("#available-loan0").append($new.find("div").eq(0).text(borrower_name));
+      $("#available-loan1").append($new.find("div").eq(1).text(interest_rate));
+      $("#available-loan2").append($new.find("div").eq(2).text(purpose));
+      $("#available-loan3").append($new.find("div").eq(3).text(maturity));
     }
   },
 

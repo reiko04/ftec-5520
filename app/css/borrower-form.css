@@ -25,7 +25,7 @@ body {
     height: 18px;
     margin: -8px 0  0;
     border-radius: 50%;
-    background: #37adbf;
+    background: #ad6666;
     cursor: pointer;
     border: 0 !important;
   }
@@ -34,7 +34,7 @@ body {
     height: 18px;
     margin: -8px 0  0;
     border-radius: 50%;
-    background: #37adbf;
+    background: #ad6666;
     cursor: pointer;
     border: 0 !important;
   }
@@ -43,7 +43,7 @@ body {
     height: 18px;
     margin: -8px 0  0;
     border-radius: 50%;
-    background: #37adbf;
+    background: #ad6666;
     cursor: pointer;
     border: 0 !important;
   }
@@ -104,10 +104,10 @@ body {
     border-radius: 50%;
   }
   .range-labels .active {
-    color: #37adbf;
+    color: #ad6666;
   }
   .range-labels .selected::before {
-    background: #37adbf;
+    background: #ad6666;
   }
   .range-labels .active.selected::before {
     display: none;
