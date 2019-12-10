@@ -157,7 +157,7 @@ window.App = {
 
   postBorrowRequest: async function() {
     var self = this;
-    var username = self.getUserInfo();
+    var username = self.getUserInfo("username");
     var amount = document.getElementById("amount").value;
     var interest = document.getElementById("interest").value;
     var purpose = document.getElementById("purpose").value;
