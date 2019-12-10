@@ -54,3 +54,9 @@ nav{
 .navbar-item{
 	color:white;
 }
+
+.selected{
+	background: #ad6666;
+      color: #fff;
+
+}

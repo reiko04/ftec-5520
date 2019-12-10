@@ -213,15 +213,36 @@ window.App = {
           lender_name = lender.username;
           status = "Borrowing";
         }
-        var $new = $("<tr><td></td><td></td><td></td><td></td><td></td></tr>");
+        var $new = $("<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>");
         console.log($new);
-        $new.find("td").eq(0).text(status);
-        $new.find("td").eq(1).text(lender_name);
-        $new.find("td").eq(2).text(interest_rate);
-        $new.find("td").eq(3).text(purpose);
-        $new.find("td").eq(4).text(maturity);
-
-        $($new).insertAfter("#reqrecord");
+        $new.find("td").eq(1).text(status);
+        $new.find("td").eq(2).text(lender_name);
+        $new.find("td").eq(3).text(interest_rate);
+        $new.find("td").eq(4).text(purpose);
+        $new.find("td").eq(5).text(maturity);
+        
+        $(function(){
+          //$('table tr:not(:first)').remove();
+          var len = $("#reqrecodetable tr").length;
+          console.log(len);
+          for(var i = 0;i<=len;i++){
+              $('#reqrecodetable tr:eq('+i+') td:first').text(i); 
+              $($new).insertAfter("#reqrecord"); 
+          } 
+        });
+        $("#reqrecodetable tr").hover(function(){
+          $(this).addClass('selected');
+        },function(){
+          $(this).removeClass('selected');
+        });
+  
+        $(function () {
+          $("#reqrecodetable tr").click(function () {
+          $(this).addClass('selected') //为选中项添加高亮
+          .siblings().removeClass('selected')//去除其他项的高亮形式
+          window.location.href = "borrower.html";
+        })
+      });
       }
     }
   
@@ -261,16 +282,37 @@ window.App = {
         borrower_name = borrower.username;
         status = "Borrowing";
       }
-      var $new = $("<tr><td></td><td></td><td></td><td></td></tr>");
+      var $new = $("<tr><td></td><td></td><td></td><td></td><td></td></tr>");
       console.log($new);
-      $new.find("td").eq(0).text(borrower_name);
-      $new.find("td").eq(1).text(interest_rate);
-      $new.find("td").eq(2).text(purpose);
-      $new.find("td").eq(3).text(maturity);
+      $new.find("td").eq(1).text(borrower_name);
+      $new.find("td").eq(2).text(interest_rate);
+      $new.find("td").eq(3).text(purpose);
+      $new.find("td").eq(4).text(maturity);
+      
+      $(function(){
+        //$('table tr:not(:first)').remove();
+        var len = $("#borrowreqtable tr").length;
+        console.log(len);
+        for(var i = 0;i<=len;i++){
+            $('#borrowreqtable tr:eq('+i+') td:first').text(i); 
+            $($new).insertAfter("#borrowreq"); 
+        } 
+      });
+      $("#borrowreqtable tr").hover(function(){
+        $(this).addClass('selected');
+      },function(){
+        $(this).removeClass('selected');
+      });
 
-      $($new).insertAfter("#borrowreq");
-    }
-  },
+      $(function () {
+        $("#borrowreqtable tr").click(function () {
+        $(this).addClass('selected') //为选中项添加高亮
+        .siblings().removeClass('selected')//去除其他项的高亮形式
+        window.location.href = "lend-form.html";
+      })
+    });
+  }
+},
 
   logout: function () {
     document.cookie = "username=; identity=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
