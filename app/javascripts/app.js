@@ -213,19 +213,15 @@ window.App = {
           lender_name = lender.username;
           status = "Borrowing";
         }
-        var $new = $("<li><div></div><div></div><div></div><div></div><div></div></li>");
+        var $new = $("<tr><td></td><td></td><td></td><td></td><td></td></tr>");
         console.log($new);
-        $new.find("div").eq(0).text(status);
-        $new.find("div").eq(1).text(lender_name);
-        $new.find("div").eq(2).text(interest_rate);
-        $new.find("div").eq(3).text(purpose);
-        $new.find("div").eq(4).text(maturity);
+        $new.find("td").eq(0).text(status);
+        $new.find("td").eq(1).text(lender_name);
+        $new.find("td").eq(2).text(interest_rate);
+        $new.find("td").eq(3).text(purpose);
+        $new.find("td").eq(4).text(maturity);
 
-        $("#request-record0").append($new.find("div").eq(0).text(status));
-        $("#request-record1").append($new.find("div").eq(1).text(lender_name));
-        $("#request-record2").append($new.find("div").eq(2).text(interest_rate));
-        $("#request-record3").append($new.find("div").eq(3).text(purpose));
-        $("#request-record4").append($new.find("div").eq(4).text(maturity));
+        $($new).insertAfter("#reqrecord");
       }
     }
   
@@ -265,22 +261,20 @@ window.App = {
         borrower_name = borrower.username;
         status = "Borrowing";
       }
-      var $new = $("<li><div></div><div></div><div></div><div></div></li>");
+      var $new = $("<tr><td></td><td></td><td></td><td></td></tr>");
       console.log($new);
-      $new.find("div").eq(0).text(borrower_name);
-      $new.find("div").eq(1).text(interest_rate);
-      $new.find("div").eq(2).text(purpose);
-      $new.find("div").eq(3).text(maturity);
+      $new.find("td").eq(0).text(borrower_name);
+      $new.find("td").eq(1).text(interest_rate);
+      $new.find("td").eq(2).text(purpose);
+      $new.find("td").eq(3).text(maturity);
 
-      $("#available-loan0").append($new.find("div").eq(0).text(borrower_name));
-      $("#available-loan1").append($new.find("div").eq(1).text(interest_rate));
-      $("#available-loan2").append($new.find("div").eq(2).text(purpose));
-      $("#available-loan3").append($new.find("div").eq(3).text(maturity));
+      $($new).insertAfter("#borrowreq");
     }
   },
 
   logout: function () {
     document.cookie = "username=; identity=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "identity=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   },
 
   depositLoan: function () {
