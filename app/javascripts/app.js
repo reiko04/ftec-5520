@@ -249,7 +249,7 @@ window.App = {
           status = "Borrowing";
           // console.log(lender);
         }
-        var $new = $("<tr><td></td><td><a></a></td><td></td><td></td><td></td><td></td></tr>");
+        var $new = $("<tr><td></td><td><a></a></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>");
         console.log($new);
         $new.find("a").text(status);
         $new.find("a").attr("href", "borrower.html?borrowid=" + record_id);
@@ -265,6 +265,7 @@ window.App = {
           for(var i = 0;i<=len;i++){
               $('#reqrecodetable tr:eq('+i+') td:first').text(i); 
               $($new).insertAfter("#reqrecord"); 
+              $('#reqrecodetable tr:eq('+i+') td:last').append('<input type="button" value="Repay">');
           } 
         });
 
@@ -280,7 +281,6 @@ window.App = {
           $("#reqrecodetable tr").click(function () {
           $(this).addClass('selected') //为选中项添加高亮
           .siblings().removeClass('selected')//去除其他项的高亮形式
-          window.location.href = "borrower.html";
         })
       });
       }
