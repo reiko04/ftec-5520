@@ -107,23 +107,46 @@
         </div>
       </div>
 
-      <table class="table" id="reqrecodetable" style="width: 100%; max-width: 100%; margin-bottom: 1rem; background-color: transparent;">
+      <div class="columns">
+          <div class="column"> 
+              <div class="card" style="height:400px;">
+                  <div class="card-content">
+                      <header>
+                  <div style="display:inline-block;float:left;">
+                    <p class="title" style="float:left;">
+                      Lending Record
+                    </p>
+                  </div>
+                  <p class="card-footer-item" style="display:inline-block; float:right;">
+                      <span>
+                          <a class="button is-link is-outlined"  onclick="App.listLendRequest()"> Refresh </a>
+                      </span>
+                  </p>
+                  
+                  </header>
+
+      <table class="table" id="lendingtable" style="width: 100%; max-width: 100%; margin-bottom: 1rem; background-color: transparent;">
         <thead>
           <tr>
             <th>Number</th>
             <th>Status</th>
-            <th>Lender Name</th>
+            <th>Borrower Name</th>
             <th>Interest Rate</th>
             <th>Purpose</th>
             <th>Maturity</th>
+            <th>Amount</th>
             <th>Start Date</th>
             <th></th>
           </tr>
         </thead>
-        <tbody id="reqrecord">
+        <tbody id="lendrecord">
           
         </tbody>
-</table>
+      </table>
+      </div>
+      </div>
+      </div>
+      </div>
 
   </section>
   </body>

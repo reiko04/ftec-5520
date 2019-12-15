@@ -328,7 +328,7 @@ window.App = {
         borrower = JSON.parse(borrower);
         borrower_name = borrower.username;
 
-        var $new = $("<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>");
+        var $new = $("<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>");
         console.log($new);
         $new.find("td").eq(1).text(status);
         // $new.find("a").attr("href", "borrower.html?borrowid=" + record_id);
@@ -336,20 +336,24 @@ window.App = {
         $new.find("td").eq(3).text(interest_rate);
         $new.find("td").eq(4).text(purpose);
         $new.find("td").eq(5).text(maturity);
+        $new.find("td").eq(6).text(amount);
+
         
         $(function(){
           //$('table tr:not(:first)').remove();
-          var len = $("#reqrecodetable tr").length;
+          var len = $("#lendingtable tr").length;
           console.log(len);
           for(var i = 0;i<=len;i++){
-              $('#reqrecodetable tr:eq('+i+') td:first').text(i); 
-              $($new).insertAfter("#reqrecord"); 
-              $('#reqrecodetable tr:eq('+i+') td:last').append('<input type="button" value="Process">');
+              $('#lendingtable tr:eq('+i+') td:first').text(i); 
+              $($new).insertAfter("#lendrecord"); 
+              $('#lendingtable tr:eq('+i+') td').eq(-2).text("16/12/2019");
+              $('#lendingtable tr:eq('+i+') td:last').append('<input type="button" value="Process">');
           } 
         });
 
         $(document).ready(function() {
-        $("#reqrecodetable tr").hover(function(){
+        $("#lendingtable thead").unbind('mouseenter mouseleave');
+        $("#lendingtable tr").hover(function(){
           $(this).addClass('selected');
         },function(){
           $(this).removeClass('selected');
@@ -357,7 +361,7 @@ window.App = {
       });
   
         $(function () {
-          $("#reqrecodetable tr").click(function () {
+          $("#lendingtable tr").click(function () {
           $(this).addClass('selected') //为选中项添加高亮
           .siblings().removeClass('selected')//去除其他项的高亮形式
         })
