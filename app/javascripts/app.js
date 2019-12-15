@@ -47,6 +47,7 @@ window.App = {
       }
       if (window.location.href == "http://localhost:8080/lender.html") {
         self.listAvailableLoan();
+        self.listLendRequest();
       }
       if ((window.location.href).includes("lend-form") && (window.location.href).includes("borrowid")) {
         self.borrowRequestDetail();
@@ -286,6 +287,83 @@ window.App = {
       }
     }
   
+  },
+
+  listLendRequest: async function() {
+    var self = this;
+    var username = self.getUserInfo("username");
+    var identity = self.getUserInfo("identity");
+    if (username != undefined && identity == "lender") {
+      // console.log("finding...")
+      var records = await fetch("/api/getlendrecord?username="+username, {
+        method: "GET", 
+        headers: { "Content-Type": "application/json" }
+      }).then(res => {
+        return res.text();
+      });
+      records = JSON.parse(records);
+      // console.log(records);
+      for (var i = 0, len = records.length; i < len; i++) {
+        var record = records[i];
+        // console.log(record);
+        var borrower_name = "";
+        var status = record.status;
+        var interest_rate = record.interestRate;
+        var purpose = record.purpose;
+        var maturity = record.maturity;
+        var amount = record.amount;
+        var record_id = record._id;
+        
+        if (status == undefined) {
+          status = "Processing";
+          // console.log(lender);
+        }
+        var borrower_id = record.borrower;
+        var borrower = await fetch("/api/getuserbyid?userid="+borrower_id, {
+          method: "GET", 
+          headers: { "Content-Type": "application/json" }
+        }).then(res => {
+          return res.text();
+        });
+        borrower = JSON.parse(borrower);
+        borrower_name = borrower.username;
+
+        var $new = $("<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>");
+        console.log($new);
+        $new.find("td").eq(1).text(status);
+        // $new.find("a").attr("href", "borrower.html?borrowid=" + record_id);
+        $new.find("td").eq(2).text(borrower_name);
+        $new.find("td").eq(3).text(interest_rate);
+        $new.find("td").eq(4).text(purpose);
+        $new.find("td").eq(5).text(maturity);
+        
+        $(function(){
+          //$('table tr:not(:first)').remove();
+          var len = $("#reqrecodetable tr").length;
+          console.log(len);
+          for(var i = 0;i<=len;i++){
+              $('#reqrecodetable tr:eq('+i+') td:first').text(i); 
+              $($new).insertAfter("#reqrecord"); 
+              $('#reqrecodetable tr:eq('+i+') td:last').append('<input type="button" value="Process">');
+          } 
+        });
+
+        $(document).ready(function() {
+        $("#reqrecodetable tr").hover(function(){
+          $(this).addClass('selected');
+        },function(){
+          $(this).removeClass('selected');
+        });
+      });
+  
+        $(function () {
+          $("#reqrecodetable tr").click(function () {
+          $(this).addClass('selected') //为选中项添加高亮
+          .siblings().removeClass('selected')//去除其他项的高亮形式
+        })
+      });
+      }
+    }
   },
 
   listAvailableLoan: async function () {

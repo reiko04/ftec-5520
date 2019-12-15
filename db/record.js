@@ -13,7 +13,8 @@ const RecordSchema = new Schema({
   purpose: {type: String},
   maturity: {type: Number},
   request_list: [{type:ObjectId, ref:'Propose'}],
-  startDate: {type: Date}
+  startDate: {type: Date},
+  status: {type: String}
 });
 
 // 导出model模块

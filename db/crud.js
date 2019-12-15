@@ -121,6 +121,13 @@ router.get('/getborrowrecord', async(req, res) => {
   res.send(records);
 });
 
+router.get('/getlendrecord', async(req, res) => {
+  var username = req.query.username;
+  user = await User.findOne({username:username}).exec();
+  records = await Record.find({lender:user._id});
+  res.send(records);
+});
+
 router.get('/getuserbyid', async(req, res) => {
   var userid = req.query.userid;
   user = await User.findById(userid).exec();
