@@ -347,7 +347,7 @@ window.App = {
               $('#lendingtable tr:eq('+i+') td:first').text(i); 
               $($new).insertAfter("#lendrecord"); 
               $('#lendingtable tr:eq('+i+') td').eq(-2).text("16/12/2019");
-              $('#lendingtable tr:eq('+i+') td:last').append('<input type="button" value="Process">');
+              $('#lendingtable tr:eq('+i+') td:last').append('<input type="button" onclick="App.depositLoan()" value="Process" o>');
           } 
         });
 
@@ -516,8 +516,8 @@ window.App = {
   depositLoan: function () {
     var self = this;
 
-    var amount = parseInt(document.getElementById("loan-input").value);
-
+    // var amount = parseInt(document.getElementById("loan-input").value);
+    var amount = 10;
     var meta;
     return TestWallet.deployed().then(function (instance) {
       meta = instance;
