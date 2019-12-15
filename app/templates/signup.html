@@ -14,7 +14,7 @@
   <body>
     <!-- NAVBAR -->
     <nav class="navbar" role="navigation" aria-label="dropdown navigation">
-        <a href="borrowtransaction.html" class="navbar-item">
+        <a href="index.html" class="navbar-item">
           <b>Back</b>
          </a>
       
@@ -23,7 +23,7 @@
 
     <section class="section" style="position: relative">
         <div class="container">
-          <div class="column">
+          <div class="column" align="center">
               <div class="center-div" style="width: 50%; padding-top: 2%;">
             <div class="title-container">
               <h1 class="title" id="home-title" style="color:white">
@@ -32,50 +32,40 @@
             </div>
           </div>
           </div>
-          
-    
+
            
-                  
-            <div class="center-div" style="display: inline; float:left;width: 53%; padding-top: 1%;">
-                    <label class="checkbox" style="font-size: 20px; color: white;">
-                        <input id="check-borrow" type="checkbox" >
-                        I want to borrow money.
-                    </label>
-                </div>
-
-                                    
-            <div class="center-div" style="display: inline; float:right; width: 47%; padding-top: 1%;">
-                    <label class="checkbox" style="font-size: 20px; color: white">
-                        <input id="ckeck-lend" type="checkbox" >
-                        I want to lend money.
-                    </label>
-                </div>
-
 
             <div class="columns" >
               <div class="column" style="padding-top:3%">           
                <div class="card" style="display:inline-block;float:left;height:450px;width:45%;">
                  <div class="card-content">
+
+                <div class="center-div" style="display: inline; float:left;width: 95%; padding-top: 1%;">
+                        <label class="checkbox" style="font-size: 20px; color: black;">
+                            <input id="check-borrow" type="checkbox" onclick="passwordlender.disabled=this.checked;usernamelender.disabled=this.checked;occupation.disabled=this.checked;lender4.disabled=this.checked;">
+                             I want to borrow money.
+                        </label>
+                </div>
                     
-                  <div class="center-div" style="display:inline-block; width: 50%; padding-top: 2.5%;">
-                    <label class="label" style="font-size: 16px; color:black;"> 
-                        password
+                  <div class="center-div" style="display:inline-block; width: 50%; padding-top: 8%;">
+                    <label class="label" style="font-size: 16px; color:black;" align="left"> 
+                        Password
                     </label>
                     <div class="field has-addons">
                         <div class="control" style="width: 80%;">
-                            <input class="input" id="password-borrower" type="password" placeholder="password">
+                            <input class="input" id="passwordborrower" type="password" placeholder="password">
                         </div>
                     </div>
                     
                   </div>
 
-                <div class="center-div" style="display:inline-block;float:left; width: 50%; padding-top: 2.5%;">
-                  <label class="label" style="font-size: 16px; color:black;"> 
-                      username
+                <div class="center-div" style="display:inline-block;float:left; width: 50%; padding-top: 8%;">
+                  <label class="label" style="font-size: 16px; color:black;" align="left"> 
+                      Username
                   </label>
                   <div class="field has-addons">
                       <div class="control" style="width: 80%;">
-                          <input id="username-borrower" class="input" type="text" placeholder="Name">
+                          <input id="usernameborrower" class="input" type="text" placeholder="username">
                       </div>
                   </div>
                   
@@ -83,7 +73,7 @@
                 
 
             <div class="center-div" style="display:inline-block;float:left; width: 50%; padding-top: 2%;">
-                <label class="label" style="font-size: 16px; color:black;"> 
+                <label class="label" style="font-size: 16px; color:black;" align="left"> 
                     University
                 </label>
                 <div class="field has-addons">
@@ -95,7 +85,7 @@
             </div>
 
             <div class="center-div" style="display:inline-block;float:left; width: 50%; padding-top: 2%;">
-              <label class="label" style="font-size: 16px; color:black;"> 
+              <label class="label" style="font-size: 16px; color:black;" align="left"> 
                   Student ID
               </label>
               <div class="field has-addons">
@@ -107,7 +97,7 @@
           </div>
 
           <div class="center-div" style="display:inline-block;float:left; width: 50%; padding-top: 2%;">
-              <label class="label" style="font-size: 16px; color:black;"> 
+              <label class="label" style="font-size: 16px; color:black;" align="left"> 
                   Major
               </label>
               <div class="field has-addons">
@@ -119,7 +109,7 @@
           </div>
 
           <div class="center-div" style=" display:inline-block;float:left;width: 80%; padding-top: 8%;">
-                <label class="label" style="font-size: 16px; color:black;"> 
+                <label class="label" style="font-size: 16px; color:black;" align="left"> 
                     Upload Your Photo (Optional)
                 </label>
                 <div class="field has-addons">
@@ -139,33 +129,39 @@
         
                <div class="card" style="display:inline-block;float:right;height:450px;width:45%;">
                  <div class="card-content">
+                     <div class="center-div" style="display: inline; float:right; width: 100%; padding-top: 1%;">
+                    <label class="checkbox" style="font-size: 20px; color: black">
+                        <input id="ckeck-lend" type="checkbox" onclick="passwordborrower.disabled=this.checked;usernameborrower.disabled=this.checked;university.disabled=this.checked;studentId.disabled=this.checked;borrow5.disabled=this.checked;borrow6.disabled=this.checked;">
+                        I want to lend money.
+                    </label>
+                </div>
                     
-                  <div class="center-div" style="display:inline-block; width: 50%; padding-top: 2.5%;">
-                    <label class="label" style="font-size: 16px; color:black;"> 
-                        password
+                  <div class="center-div" style="display:inline-block; width: 50%; padding-top: 8%;">
+                    <label class="label" style="font-size: 16px; color:black;" align="left"> 
+                        Password
                     </label>
                     <div class="field has-addons">
                         <div class="control" style="width: 80%;">
-                            <input class="input" id="password-lender" type="password" placeholder="password">
+                            <input class="input" id="passwordlender" type="password" placeholder="password">
                         </div>
                     </div>
                     
                 </div>
 
-                <div class="center-div" style="display:inline-block;float:left; width: 50%; padding-top: 2.5%;">
-                  <label class="label" style="font-size: 16px; color:black;"> 
-                      Name
+                <div class="center-div" style="display:inline-block;float:left; width: 50%; padding-top: 8%;">
+                  <label class="label" style="font-size: 16px; color:black;" align="left"> 
+                      Username
                   </label>
                   <div class="field has-addons">
                       <div class="control" style="width: 80%;">
-                          <input id="username-lender" class="input" type="text" placeholder="Name">
+                          <input id="usernamelender" class="input" type="text" placeholder="username">
                       </div>
                   </div>
                   
               </div>
 
             <div class="center-div" style="display:inline-block;float:left; width: 50%; padding-top: 2%;">
-                <label class="label" style="font-size: 16px; color:black;"> 
+                <label class="label" style="font-size: 16px; color:black;" align="left"> 
                     Occupation
                 </label>
                 <div class="field has-addons">
@@ -176,7 +172,7 @@
             </div>
 
             <div class="center-div" style=" display:inline-block;float:left;width: 80%; padding-top: 21.2%;">
-                <label class="label" style="font-size: 16px; color:black;"> 
+                <label class="label" style="font-size: 16px; color:black;" align="left"> 
                     Upload Your Photo (Optional)
                 </label>
                 <div class="field has-addons">

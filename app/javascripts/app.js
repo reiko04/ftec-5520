@@ -94,8 +94,8 @@ window.App = {
     var studentID = undefined;
     var body = {};
     if (borrow) {
-      username = document.getElementById("username-borrower").value;
-      password = document.getElementById("password-borrower").value;
+      username = document.getElementById("usernameborrower").value;
+      password = document.getElementById("passwordborrower").value;
       identity = "borrower";
       university = document.getElementById("university").value;
       studentID = document.getElementById("studentId").value;
@@ -107,8 +107,8 @@ window.App = {
         studentID:studentID
       }
     } else {
-      username = document.getElementById("username-lender").value;
-      password = document.getElementById("password-lender").value;
+      username = document.getElementById("usernamelender").value;
+      password = document.getElementById("passwordlender").value;
       identity = "lender";
       occupation = document.getElementById("occupation").value;
       body = {
@@ -267,11 +267,14 @@ window.App = {
               $($new).insertAfter("#reqrecord"); 
           } 
         });
+
+        $(document).ready(function() {
         $("#reqrecodetable tr").hover(function(){
           $(this).addClass('selected');
         },function(){
           $(this).removeClass('selected');
         });
+      });
   
         $(function () {
           $("#reqrecodetable tr").click(function () {
@@ -338,17 +341,19 @@ window.App = {
             $($new).insertAfter("#borrowreq"); 
         } 
       });
+
+      $(document).ready(function() {
       $("#borrowreqtable tr").hover(function(){
         $(this).addClass('selected');
       },function(){
         $(this).removeClass('selected');
       });
+    });
 
       $(function () {
         $("#borrowreqtable tr").click(function () {
         $(this).addClass('selected') //为选中项添加高亮
         .siblings().removeClass('selected')//去除其他项的高亮形式
-        window.location.href = "lend-form.html";
       })
 
       // $("#borrowreqtable tr").click(function() {

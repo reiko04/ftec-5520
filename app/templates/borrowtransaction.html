@@ -33,11 +33,11 @@
             </div>
           </div>
 
-      <div class="columns">
+      <div class="columns" align="center">
         <div class="column">   
-         <div class="card" style="height:200px;">
+         <div class="card" style="height:200px;width:75%">
            <div class="card-content">
-           <table class="table" style="width: 80%; max-width: 100%; margin-bottom: 1rem; background-color: transparent;">
+           <table class="table" style="width: 85%; max-width: 100%; margin-bottom: 1rem; background-color: transparent;">
              <thead>
                      <p class="title" style="font-size: 30px;">
                              Borrower information
@@ -46,29 +46,26 @@
              <p> 
                  
              </p>
-             <div style="display:inline-block;float:left">
-               <img src="../images/anna.jpeg" width="90px" height="90px" />
-             </div>
+             
              <tbody style="display:inline-block;float:right;">
                <tr>
                  <th>Name</th>
-                 <td><p class="info" id="login-username"></p></td>
-                 <th>Birthday</th>
-                 <td>01.01</td>
+                 <th>University</th>
                  <th>Credit Rating</th>
-                 <td>🌟🌟🌟</td>
+                 <th>Student ID</th>
+                 <th>Major</th>
                  <th>Account Balance</th>
+                 
+               </tr>
+               <tr>
+                  <td id="borrower-name"></td>
+                 <td>CUHK</td>
+                 <td>🌟🌟🌟</td>
+                 <td>1155000000</td>
+                 <td>Msc of FinTech</td>
                  <td>
                    <p class="info" id="port-val"></p>
                  </td>
-               </tr>
-               <tr>
-                 <th>University</th>
-                 <td>CUHK</td>
-                 <th>Student ID</th>
-                 <td>1155132xxx</td>
-                 <th>Major</th>
-                 <td>Msc of Financial Technology</td>
                </tr>
              </tbody>
            </table>
@@ -100,44 +97,41 @@
                 <table class="table" style="width: 100%; max-width: 100%; margin-bottom: 1rem; background-color: transparent;">
                   <thead>
                     <tr>
-                      <th>ID</th>
+                      <th>Number</th>
+                      <th>Lender Name</th>
                       <th>Amount</th>
                       <th>Interest Rate</th>
                       <th>Maturity</th>
-                      <th>Time</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope="row">1</th>
-                      <td>2333</td>
+                      <td scope="row">1</td>
+                      <td>lender0</td>
+                      <td>25</td>
                       <td>10%</td>
-                      <td>100 days</td>
-                      <td>2019/10/25 11:00</td>
-                      <td>
-                        <button class="btn">check</button>
-                      </td>
+                      <td>120 days</td>
+                      
+                      
                     </tr>
                     <tr>
-                      <th scope="row">2</th>
-                      <td>9293</td>
-                      <td>6%</td>
+                      <td scope="row">2</td>
+                      <td>lender4</td>
+                      <td>50</td>
+                      <td>12%</td>
                       <td>180 days</td>
-                      <td>2019/11/09 19:37</td>
-                      <td>
-                          <button class="btn">check</button>
-                        </td>
+                      
+                    
                     </tr>
                     <tr>
-                      <th scope="row">3</th>
-                      <td>888</td>
-                      <td>11%</td>
+                      <td scope="row">3</td>
+                      <td>lender5</td>
+                      <td>30</td>
+                      <td>8%</td>
                       <td>90 days</td>
-                      <td>2019/11/20 15:28</td>
-                      <td>
-                          <button class="btn">check</button>
-                        </td>
+                      
+                      
                     </tr>
                   </tbody>
                 </table>
@@ -173,7 +167,7 @@
                         <th>Interest Rate</th>
                         <th>Purpose</th>
                         <th>Maturity</th>
-                        <th></th>
+                        
                       </tr>
                     </thead>
                     <tbody id="reqrecord">
