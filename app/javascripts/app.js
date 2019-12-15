@@ -48,6 +48,12 @@ window.App = {
       if (window.location.href == "http://localhost:8080/lender.html") {
         self.listAvailableLoan();
       }
+      if ((window.location.href).includes("lend-form") && (window.location.href).includes("borrowid")) {
+        self.borrowRequestDetail();
+      }
+      if ((window.location.href).includes("borrower.html") &&(window.location.href).includes("borrowid")) {
+        self.listLendPropose();
+      }
     });
   },
 
@@ -146,11 +152,12 @@ window.App = {
       console.log("login error!");
     } 
     if (user.identity == "borrower") {
-      document.cookie = "username=" + user.username
+      document.cookie = "username=" + user.username;
       document.cookie = "identity=" + "borrower";
       window.location.href = "borrowtransaction.html";
     } else if (user.identity == "lender") {
-      document.cookie = "username=" + user.username+ + ";" + "identity=" + "lender";;
+      document.cookie = "username=" + user.username;
+      document.cookie = "identity=" + "lender";
       window.location.href = "lender.html";
     }
   },
@@ -179,6 +186,31 @@ window.App = {
     window.location.href = "borrowtransaction.html";
   },
 
+  postLendPropose: async function() {
+    var self = this;
+    var params = (new URL(document.location)).searchParams;
+    var record_id = params.get("borrowid");
+    var username = self.getUserInfo("username");
+    // console.log(username);
+    var interest = document.getElementById("propose-interest").value;
+    var maturity = document.getElementById("propose-maturity").value;
+    var body = {
+      lender: username,
+      interest: interest,
+      maturity: maturity,
+      recordid: record_id
+    }
+    console.log(body);
+    await fetch("api/postlendproposal", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    }).then(res => {
+      console.log("Request complete! response:", res);
+    });
+    window.location.href = "lender.html";
+  },
+
   listBorrowRequest: async function() {
     var self = this;
     var username = self.getUserInfo("username");
@@ -201,6 +233,8 @@ window.App = {
         var interest_rate = record.interestRate;
         var purpose = record.purpose;
         var maturity = record.maturity;
+        var record_id = record._id;
+        // console.log(record);?\
         
         if (record.lender != undefined) {
           var lender_id = record.lender;
@@ -210,12 +244,15 @@ window.App = {
           }).then(res => {
             return res.text();
           });
+          lender = JSON.parse(lender);
           lender_name = lender.username;
           status = "Borrowing";
+          // console.log(lender);
         }
-        var $new = $("<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>");
+        var $new = $("<tr><td></td><td><a></a></td><td></td><td></td><td></td><td></td></tr>");
         console.log($new);
-        $new.find("td").eq(1).text(status);
+        $new.find("a").text(status);
+        $new.find("a").attr("href", "borrower.html?borrowid=" + record_id);
         $new.find("td").eq(2).text(lender_name);
         $new.find("td").eq(3).text(interest_rate);
         $new.find("td").eq(4).text(purpose);
@@ -263,11 +300,13 @@ window.App = {
       if (record.lender != undefined) {
         continue;
       }
-      // console.log(record);
+      console.log(record);
       var borrower_name = "";
       var interest_rate = record.interestRate;
       var purpose = record.purpose;
       var maturity = record.maturity;
+      var record_id = record._id;
+      console.log(record_id);
       
       if (record.borrower != undefined) {
         var borrow_id = record.borrower;
@@ -282,9 +321,10 @@ window.App = {
         borrower_name = borrower.username;
         status = "Borrowing";
       }
-      var $new = $("<tr><td></td><td></td><td></td><td></td><td></td></tr>");
+      var $new = $("<tr><td></td><td><a></a></td><td></td><td></td><td></td></tr>");
       console.log($new);
-      $new.find("td").eq(1).text(borrower_name);
+      $new.find("a").text(borrower_name);
+      $new.find("a").attr("href", "lend-form.html?borrowid="+record_id);
       $new.find("td").eq(2).text(interest_rate);
       $new.find("td").eq(3).text(purpose);
       $new.find("td").eq(4).text(maturity);
@@ -310,9 +350,77 @@ window.App = {
         .siblings().removeClass('selected')//去除其他项的高亮形式
         window.location.href = "lend-form.html";
       })
+
+      // $("#borrowreqtable tr").click(function() {
+      //   window.location.href = "lend-form.html?borrowid="+record_id;
+      // });
+      });
+    }
+  },
+
+  listLendPropose: async function () {
+    var params = (new URL(document.location)).searchParams;
+    var record_id = params.get("borrowid");
+    var record = await fetch("/api/getrecordbyid?recordid="+record_id, {
+      method: "GET", 
+      headers: { "Content-Type": "application/json" }
+    }).then(res => {
+      return res.text();
     });
-  }
-},
+    record = JSON.parse(record);
+    var propose_list = record.request_list;
+    // console.log(propose_list);
+    for (var i = 0, len = propose_list.length; i < len; i++) {
+      var propose_id = propose_list[i];
+      // console.log(propose_id);
+      var propose = await fetch("/api/getproposebyid?proposeid="+propose_id, {
+        method: "GET", 
+        headers: { "Content-Type": "application/json" }
+      }).then(res => {
+        return res.text();
+      });
+      propose = JSON.parse(propose);
+      // console.log(propose);
+      var lender = await fetch("/api/getuserbyid?userid="+propose.lender, {
+        method: "GET", 
+        headers: { "Content-Type": "application/json" }
+      }).then(res => {
+        return res.text();
+      });
+      lender = JSON.parse(lender);
+      // console.log(lender);
+      $("#username"+String(i+1)).text(lender.username);
+      $("#occupation"+String(i+1)).text(lender.occupation);
+      $("#interest"+String(i+1)).text(String(propose.interestRate)+"%");
+      $("#maturity"+String(i+1)).text(String(propose.maturity) + " days");
+    }
+  },
+
+  borrowRequestDetail: async function () {
+    var params = (new URL(document.location)).searchParams;
+    var record_id = params.get("borrowid");
+    // alert(record_id);
+    var record = await fetch("/api/getrecordbyid?recordid="+record_id, {
+      method: "GET", 
+      headers: { "Content-Type": "application/json" }
+    }).then(res => {
+      return res.text();
+    });
+    record = JSON.parse(record);
+    var borrow_id = record.borrower;
+    var borrower = await fetch("/api/getuserbyid?userid="+borrow_id, {
+      method: "GET", 
+      headers: { "Content-Type": "application/json" }
+    }).then(res => {
+      return res.text();
+    });
+    borrower = JSON.parse(borrower);
+    console.log(borrower.username);
+    $("#borrower-name").text(borrower.username);
+    $("#interest").text(record.interestRate);
+    $("#amount").text(record.amount);
+    $("#maturity").text(record.maturity);
+  },
 
   logout: function () {
     document.cookie = "username=; identity=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
@@ -338,15 +446,65 @@ window.App = {
     });
   },
 
-  requestLoan: function () {
+  requestLoan: async function () {
     var self = this;
-    var amount = parseInt(document.getElementById("borrow-input").value);
+    var check1 = document.getElementById("checkbox1").checked;
+    var check2 = document.getElementById("checkbox2").checked;
+    var check3 = document.getElementById("checkbox3").checked;
+    var params = (new URL(document.location)).searchParams;
+    var record_id = params.get("borrowid");
+    // console.log(record_id);
+    var record = await fetch("/api/getrecordbyid?recordid="+record_id, {
+      method: "GET", 
+      headers: { "Content-Type": "application/json" }
+    }).then(res => {
+      return res.text();
+    });
+    record = JSON.parse(record);
+    var amount = parseInt(record.amount);
+    var lender = undefined;
+    var interest = undefined;
+    var maturity = undefined;
+    if (check1) {
+      lender = $("#username1").text();
+      interest = $("#interest1").text();
+      maturity = $("#maturity1").text();
+    }
+    else if (check2){
+      lender = $("#username2").text();
+      interest = $("#interest2").text();
+      maturity = $("#maturity2").text();
+    } 
+    else if (check3) {
+      lender = $("#username3").text();
+      interest = $("#interest3").text();
+      maturity = $("#maturity3").text();
+    }
+    else {
+      alert("Please choose a loan to process!");
+      return;
+    }
+    var body = {
+      recordid:record_id,
+      lender:lender,
+      interest:parseInt(interest.slice(0,-1)),
+      maturity:parseInt(maturity.slice(0, -5))
+    };
+    // console.log(body);
+    await fetch("api/updateborrowrecord", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    }).then(res => {
+      console.log("Request complete! response:", res);
+    });
+    // var amount = parseInt(document.getElementById("borrow-input").value);
     console.log(amount);
     var meta;
     return TestWallet.deployed().then(function (instance) {
       meta = instance;
-      instance.submitTransaction(account, web3.toWei(amount), "0x", {from: account}).then(function (result) {
-        return meta.transactionCount.call({from: account});
+      instance.submitTransaction(account, web3.toWei(amount), "0x", {from: "0x9Dc5a070BDA10784a1a7591F95b900429971bc18"}).then(function (result) {
+        return meta.transactionCount.call({from: "0x9Dc5a070BDA10784a1a7591F95b900429971bc18"});
       }).then(function(count) {
         return meta.executeTransaction(parseInt(count.toLocaleString()) - 1, {from: account});
       }).catch(function (e) {
@@ -354,6 +512,7 @@ window.App = {
       });
     }).then(function() {
       self.getBalance();
+      window.location.href = "borrowtransaction.html";
     }).catch(function (e) {
       console.log(e);
     });

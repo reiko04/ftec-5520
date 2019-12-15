@@ -12,7 +12,8 @@ const RecordSchema = new Schema({
   amount:{type: Number},
   purpose: {type: String},
   maturity: {type: Number},
-  request_list: [{type:ObjectId, ref:'User'}]
+  request_list: [{type:ObjectId, ref:'Propose'}],
+  startDate: {type: Date}
 });
 
 // 导出model模块

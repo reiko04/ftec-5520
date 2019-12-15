@@ -48,15 +48,15 @@
          <tbody style="display:inline-block;float:right;">
            <tr>
              <th>Name</th>
-             <td>Anna</td>
+             <td id="borrower-name"></td>
              <th>Birthday</th>
              <td>01.01</td>
              <th>Credit Rating</th>
              <td>🌟🌟🌟</td>
-             <th>Account Balance</th>
+             <!-- <th>Account Balance</th>
              <td>
                <p class="info" id="port-val"></p>
-             </td>
+             </td> -->
            </tr>
            <tr>
              <th>University</th>
@@ -70,13 +70,15 @@
            </tr>
            <tr>
                 <th>Amount</th>
-                <td>111</td>
+                <td id="amount"></td>
                 <th>Interest rate</th>
-                <td>10%</td>
+                <td id="interest"></td>
                 <th>Purpose</th>
                 <td>Study</td>
                 <th>Time</th>
                 <td>2019/01/01 11:00</td>
+                <th>Maturity</th>
+                <td id="maturity"></td>
               </tr>
          </tbody>
        </table>
@@ -110,7 +112,7 @@
             
             <div class="field has-addons">
                 <div class="control" style="width: 87.2%;">
-                    <input class="input" type="number" placeholder="Minimum interest rate (%)">
+                    <input id="propose-interest" class="input" type="number" placeholder="Minimum interest rate (%)">
                 </div>
             </div>
         </div>
@@ -132,7 +134,7 @@
                     </span>
                 </p>
                 <div class="control" style="width: 70.2%;">
-                    <input class="input" type="number" placeholder="Maturity">
+                    <input id="propose-maturity" class="input" type="number" placeholder="Maturity">
                 </div>
             </div>
         </div>
@@ -149,7 +151,7 @@
         </div>
 
         <div class="center-div" style="margin: auto; width: 50%; padding-top: 2.5%;">
-            <a class="button is-link is-inverted" onclick="App.requestLoan()" href="lender.html"> Process Application! </a>
+            <a class="button is-link is-inverted" onclick="App.postLendPropose()"> Process Application! </a>
         </div>
 
         <div class="center-div" style="margin: auto; width: 50%; padding-top: 2.5%;">
