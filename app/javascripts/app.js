@@ -352,7 +352,6 @@ window.App = {
         });
 
         $(document).ready(function() {
-        $("#lendingtable thead").unbind('mouseenter mouseleave');
         $("#lendingtable tr").hover(function(){
           $(this).addClass('selected');
         },function(){
